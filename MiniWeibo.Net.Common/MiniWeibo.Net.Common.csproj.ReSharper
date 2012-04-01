@@ -1,0 +1,10 @@
+<Configuration>
+  <NamespaceFolders>
+    <SkipFolder>8AA442EB-5565-4171-8964-4DB5CECF5423/d:Core/d:Utilities</SkipFolder>
+    <SkipFolder>8AA442EB-5565-4171-8964-4DB5CECF5423/d:Extensions</SkipFolder>
+    <SkipFolder>8AA442EB-5565-4171-8964-4DB5CECF5423/d:Model/d:Enums</SkipFolder>
+    <SkipFolder>8AA442EB-5565-4171-8964-4DB5CECF5423/d:Model</SkipFolder>
+    <SkipFolder>8AA442EB-5565-4171-8964-4DB5CECF5423/d:Serialization/d:Converters</SkipFolder>
+    <SkipFolder>8AA442EB-5565-4171-8964-4DB5CECF5423/d:Service</SkipFolder>
+  </NamespaceFolders>
+</Configuration>

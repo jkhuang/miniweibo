@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8AA442EB-5565-4171-8964-4DB5CECF5423}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MiniWeibo.Net.Common</RootNamespace>
+    <AssemblyName>MiniWeibo.Net.Common</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Hammock, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c148cfba29ed1a4d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\danielcrenna-tweetsharp-7c9e70c\src\packages\Hammock.1.2.7\lib\net35\Hammock.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.0.3.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\danielcrenna-tweetsharp-7c9e70c\src\packages\Newtonsoft.Json.4.0.3\lib\net35\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="OAuth.Net.Common, Version=0.8.1.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\OAuthNet-source-0.8.1.1\OAuth.Net-source-0.8.1.1\OAuth.Net.Common\bin\Debug\OAuth.Net.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BaseHttpRequest.cs" />
+    <Compile Include="Constant.cs" />
+    <Compile Include="Core\Utilities\RegexPattern.cs" />
+    <Compile Include="Extensions\ObjectExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\TimeExtensions.cs" />
+    <Compile Include="Generated\WeiboService.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WeiboService.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers.cs" />
+    <Compile Include="IHttpRequest.cs" />
+    <Compile Include="Model\Enums\WeiboEnums.cs" />
+    <Compile Include="Model\IWeiboable.cs" />
+    <Compile Include="Model\IWeiboModel.cs" />
+    <Compile Include="Model\OAuthAccessToken.cs" />
+    <Compile Include="Model\OAuthRequestToken.cs" />
+    <Compile Include="Model\WeiboAccount.cs" />
+    <Compile Include="Model\WeiboClientInfo.cs" />
+    <Compile Include="Model\WeiboEntities.cs" />
+    <Compile Include="Model\WeiboResponse.cs" />
+    <Compile Include="Model\WeiboStatus.cs" />
+    <Compile Include="Model\WeiboUrl.cs" />
+    <Compile Include="Model\WeiboUser.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serialization\Converters\WeiboConverterBase.cs" />
+    <Compile Include="Serialization\Converters\WeiboDateTimeConverter.cs" />
+    <Compile Include="Serialization\JsonConventionResolver.cs" />
+    <Compile Include="Serialization\SerializerBase.cs" />
+    <Compile Include="Service\WeiboService.cs" />
+    <Compile Include="Service\WeiboService.OAuth.cs" />
+    <Compile Include="Service\WeiboService.Streaming.cs" />
+    <Compile Include="Service\WeiboServiceFormat.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Generated\WeiboService.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>WeiboService.cs</LastGenOutput>
+    </None>
+    <None Include="Generated\_WeiboService.Account.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

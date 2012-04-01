@@ -1,0 +1,156 @@
+﻿<#@ template inherits="Microsoft.VisualStudio.TextTemplating.VSHost.ModelingTextTransformation" language="C#v3.5" debug="true" hostSpecific="true" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.dll" #>
+<#@ Assembly Name="System.Core.dll" #>
+<#@ Assembly Name="System.Windows.Forms.dll" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #> 
+<#@ import namespace="System.Text.RegularExpressions" #>
+<#
+   // insert your template code here the tempalte code will be syntaxhighlighted 
+   // and you will have intellisense for all namespaces in the full edition
+   string Greeting = "Hello";
+
+   var methods = new List<MiniWeiboMethod>(10);
+
+   var manifests = new string[] {
+	"_WeiboService.Account.json"
+};
+
+foreach (var manifest in manifests)
+{
+		string absolutePath = Host.ResolvePath(manifest);
+		string contents = File.ReadAllText(absolutePath);
+
+		var lines = contents.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+		lines = lines.Where(l => !l.StartsWith("//")).ToArray(); // <-- Ignore comments
+
+		foreach(var line in lines)
+		{
+			var method = new MiniWeiboMethod(line);
+			methods.Add(method);
+		}
+}
+
+#>
+// This is the output code from your template
+// you only get syntax-highlighting here - not intellisense
+using System;
+using System.Collections.Generic;
+using Hammock;
+using Hammock.Web;
+
+namespace MiniWeibo.Net.Common
+{
+    public partial interface IMiniWeiboService
+	{
+		#region Sequential Methods
+			<# foreach (MiniWeiboMethod method in methods) { #>
+				<#= method.Type #> <#= method.Name #>(<# var count = method.Parameters.Count(); for(var i = 0; i < count; i++) { var parameter = method.Parameters[i]; #><#= parameter.Type #> <#= parameter.Name #><# if(i < count - 1) { #>, <# } #><# } #>);	
+			<# } #>
+		#endregion
+	}
+}
+
+namespace MiniWeibo.Net.Common
+{
+	public partial class WeiboService
+	{
+		#region Sequential Methods
+			<# foreach (MiniWeiboMethod method in methods) { #>
+						public virtual <#= method.Type #> <#= method.Name #>(<# var count = method.Parameters.Count(); for(var i = 0; i < count; i++) { var parameter = method.Parameters[i]; #><#= parameter.Type #> <#= parameter.Name #><# if(i < count - 1) { #>, <# } #><# } #>)
+						{
+							return WithHammock<<#= method.Type #>>(<# switch(method.Method){case "POST": #>WebMethod.Post, <# break; case "PUT": #>WebMethod.Put, <#break; case "DELETE": #>WebMethod.Delete, <# break; case "HEAD":#>WebMethod.Head, <# break; case "OPTIONS": #>WebMethod.Options, <# break; default: break; } #><#= method.Path #>, FormatAsString<# if(count > 0) { #>, <# } #><# for(var i = 0; i < count; i++) { var parameter = method.Parameters[i]; #>"<# if(i == 0) { #>?<# } else { #>&<# } #><#= Helpers.Underscore(parameter.Name) #>=", <#= parameter.Name #><# if(i < count - 1) { #>, <# } #><# } #>);
+						}
+			<# } #>
+		#endregion
+	}
+}
+
+
+
+ 
+<#+
+	internal class Helpers
+	{
+		private const string UnderscoresPattern = "(((?<=[a-z])[A-Z])|([A-Z](?![A-Z]|$)))";
+
+		public static string Capitalize(string upperCase)
+        {
+            var lower = upperCase.ToLowerInvariant();
+            return char.ToUpperInvariant(lower[0]) + lower.Substring(1);
+        }
+
+		public static string Underscore(string camelCase)
+		{
+			if(camelCase.StartsWith("@"))
+			{
+				camelCase = camelCase.Substring(1);
+			}
+			var underscored = Regex.Replace(camelCase, UnderscoresPattern,
+											new MatchEvaluator(m => string.Concat("_", m.Value.ToLowerInvariant())),
+											RegexOptions.Compiled);
+
+			return underscored;
+		}		
+	}
+
+	internal class MiniWeiboMethod
+	{
+		public string Type
+		{
+			get; private set;
+		}
+		public string Name
+		{
+			get; private set;
+		}
+		public string Path
+		{
+			get; private set;
+		}
+		public string Method
+		{
+			get; private set;
+		}
+		public List<MiniWeiboMethodParameter> Parameters
+		{
+			get; private set;
+		}
+
+		public MiniWeiboMethod(string line)
+		{
+		     var parts = line.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+			 Type = parts[0].Trim();
+			 
+			 var pathParts = parts[1].Trim().Split(new string[] { ":" }, StringSplitOptions.RemoveEmptyEntries);
+			 Path = pathParts[0];
+			 Method = pathParts.Length > 1 ? Method = pathParts[1] : "GET";
+
+			 Name = parts[2].Trim();
+
+			 Parameters = new List<MiniWeiboMethodParameter>();
+			 for(var i = 3; i < parts.Length; i++)
+			 {
+				var data = parts[i].Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+				Parameters.Add(new MiniWeiboMethodParameter() { Type = data[0], Name = data[1] });
+			 }
+		}
+	}
+
+	internal class MiniWeiboMethodParameter
+	{
+		public string Type
+		{
+			get; set;
+		}
+		public string Name
+		{
+			get; set;
+		}
+	}
+#>

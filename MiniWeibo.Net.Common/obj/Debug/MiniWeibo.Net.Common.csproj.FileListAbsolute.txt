@@ -1,0 +1,11 @@
+F:\MyWork\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.Net.Common\bin\Debug\MiniWeibo.Net.Common.dll
+F:\MyWork\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.Net.Common\bin\Debug\MiniWeibo.Net.Common.pdb
+F:\MyWork\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.Net.Common\bin\Debug\Hammock.dll
+F:\MyWork\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.Net.Common\bin\Debug\Newtonsoft.Json.dll
+F:\MyWork\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.Net.Common\bin\Debug\OAuth.Net.Common.dll
+F:\MyWork\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.Net.Common\bin\Debug\OAuth.Net.Common.pdb
+F:\MyWork\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.Net.Common\bin\Debug\OAuth.Net.Common.xml
+F:\MyWork\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.Net.Common\bin\Debug\Newtonsoft.Json.xml
+F:\MyWork\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.Net.Common\obj\Debug\ResolveAssemblyReference.cache
+F:\MyWork\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.Net.Common\obj\Debug\MiniWeibo.Net.Common.dll
+F:\MyWork\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.Net.Common\obj\Debug\MiniWeibo.Net.Common.pdb
