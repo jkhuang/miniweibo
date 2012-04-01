@@ -1,0 +1,16 @@
+F:\MyWork\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.UnitTests\bin\Debug\MiniWeibo.UnitTests.dll.config
+F:\MyWork\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.UnitTests\bin\Debug\MiniWeibo.UnitTests.dll
+F:\MyWork\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.UnitTests\bin\Debug\MiniWeibo.UnitTests.pdb
+F:\MyWork\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.UnitTests\bin\Debug\Hammock.dll
+F:\MyWork\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.UnitTests\bin\Debug\MiniWeibo.Net.Common.dll
+F:\MyWork\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.UnitTests\bin\Debug\nunit.framework.dll
+F:\MyWork\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.UnitTests\bin\Debug\nunit.mocks.dll
+F:\MyWork\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.UnitTests\bin\Debug\Newtonsoft.Json.dll
+F:\MyWork\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.UnitTests\bin\Debug\MiniWeibo.Net.Common.pdb
+F:\MyWork\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.UnitTests\bin\Debug\Newtonsoft.Json.xml
+F:\MyWork\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.UnitTests\obj\Debug\ResolveAssemblyReference.cache
+F:\MyWork\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.UnitTests\obj\Debug\MiniWeibo.UnitTests.dll
+F:\MyWork\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.UnitTests\obj\Debug\MiniWeibo.UnitTests.pdb
+F:\MyWork\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.UnitTests\bin\Debug\TweetSharp.dll
+F:\MyWork\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.UnitTests\bin\Debug\Hammock.ClientProfile.dll
+F:\MyWork\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.UnitTests\bin\Debug\TweetSharp.pdb

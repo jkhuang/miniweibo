@@ -1,0 +1,9 @@
+<Modules>
+  <Module PersistentId="8AA442EB-5565-4171-8964-4DB5CECF5423" ModuleId="MiniWeibo.Net.Common" />
+  <Module PersistentId="EE739EF0-FD95-48CC-86AB-BCD873981949" ModuleId="OAuth.Net.Common" />
+  <Module PersistentId="27F0F1C7-42D6-4F55-BEDB-39458A1661F9" ModuleId="OAuth.Net.TestCases" />
+  <Module PersistentId="AB7712BB-ADFB-48B5-AD8A-420683C2D7E9" ModuleId="OAuth.Net.Consumer" />
+  <Module PersistentId="BCF0E325-B557-4D2C-9092-25A9E97490C3" ModuleId="OAuth.Net.Components" />
+  <Module PersistentId="A6D845EE-20BE-4754-A70A-7DDF0B8FA953" ModuleId="OAuth.Net.ServiceProvider" />
+  <Module PersistentId="91966C09-1604-460B-B2A8-AE09FA776F7A" ModuleId="MiniWeibo.UnitTests" />
+</Modules>

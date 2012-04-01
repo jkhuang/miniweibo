@@ -1,0 +1,329 @@
+<Configuration>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Model/d:Enums/f:WeiboEnums.cs" caret="188" fromTop="11" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Serialization/d:Converters/f:WeiboDateTimeConverter.cs" caret="717" fromTop="22" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Extensions/f:StringExtensions.cs" caret="6497" fromTop="17" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Core/d:Utilities/f:RegexPattern.cs" caret="0" fromTop="0" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Extensions/f:ObjectExtensions.cs" caret="467" fromTop="2" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Model/f:WeiboClientInfo.cs" caret="90" fromTop="4" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Model/f:WeiboResponse.cs" caret="777" fromTop="5" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Model/f:OAuthRequestToken.cs" caret="262" fromTop="9" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Model/f:OAuthAccessToken.cs" caret="749" fromTop="12" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Generated/f:_WeiboService.Account.json" caret="285" fromTop="5" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/f:Constant.cs" caret="122" fromTop="5" />
+      <File id="91966C09-1604-460B-B2A8-AE09FA776F7A/f:App.config" caret="89" fromTop="4" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Service/f:WeiboService.OAuth.cs" caret="5140" fromTop="16" />
+      <File id="91966C09-1604-460B-B2A8-AE09FA776F7A/d:Service/f:WeiboServiceTests.cs" caret="0" fromTop="0" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Service/f:WeiboServiceFormat.cs" caret="125" fromTop="6" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Model/f:WeiboAccount.cs" caret="0" fromTop="0" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Model/f:WeiboEntities.cs" caret="177" fromTop="9" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Model/f:IWeiboable.cs" caret="716" fromTop="22" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Model/f:IWeiboModel.cs" caret="166" fromTop="8" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/f:Helpers.cs" caret="310" fromTop="3" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Generated/f:WeiboService.cs" caret="820" fromTop="26" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Model/f:WeiboStatus.cs" caret="10311" fromTop="21" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Model/f:WeiboUser.cs" caret="2725" fromTop="15" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Service/f:WeiboService.Streaming.cs" caret="573" fromTop="12" />
+      <File id="91966C09-1604-460B-B2A8-AE09FA776F7A/d:Service/f:WeiboServiceTests.OAuth.cs" caret="2851" fromTop="22" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Service/f:WeiboService.cs" caret="1029" fromTop="25" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Serialization/d:Converters/f:WeiboConverterBase.cs" caret="219" fromTop="8" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Serialization/f:SerializerBase.cs" caret="1140" fromTop="26" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Serialization/f:JsonConventionResolver.cs" caret="364" fromTop="14" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Model/f:WeiboStatus.cs" caret="9689" fromTop="16" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Model/f:WeiboStatus.cs" caret="9854" fromTop="21" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Model/f:WeiboStatus.cs" caret="9996" fromTop="23" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Model/f:WeiboStatus.cs" caret="10730" fromTop="25" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Service/f:WeiboService.cs" caret="1790" fromTop="17" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Service/f:WeiboService.cs" caret="650" fromTop="6" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Service/f:WeiboService.cs" caret="5471" fromTop="12" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Service/f:WeiboService.cs" caret="779" fromTop="13" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Service/f:WeiboService.cs" caret="389" fromTop="5" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Service/f:WeiboService.cs" caret="1305" fromTop="17" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Service/f:WeiboService.cs" caret="10198" fromTop="34" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Service/f:WeiboService.cs" caret="2697" fromTop="21" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Service/f:WeiboService.cs" caret="2805" fromTop="25" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Service/f:WeiboService.cs" caret="3602" fromTop="22" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Service/f:WeiboService.cs" caret="4092" fromTop="19" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Service/f:WeiboService.Streaming.cs" caret="540" fromTop="18" />
+      <File id="91966C09-1604-460B-B2A8-AE09FA776F7A/d:Service/f:WeiboServiceTests.OAuth.cs" caret="2815" fromTop="18" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Service/f:WeiboService.cs" caret="226" fromTop="8" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Service/f:WeiboService.cs" caret="313" fromTop="0" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Service/f:WeiboService.cs" caret="1536" fromTop="14" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Service/f:WeiboService.cs" caret="2137" fromTop="9" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Serialization/f:SerializerBase.cs" caret="70" fromTop="2" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Serialization/f:SerializerBase.cs" caret="409" fromTop="7" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Serialization/f:SerializerBase.cs" caret="788" fromTop="13" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Serialization/f:SerializerBase.cs" caret="1149" fromTop="26" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Serialization/f:JsonConventionResolver.cs" caret="756" fromTop="9" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Serialization/f:JsonConventionResolver.cs" caret="992" fromTop="17" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Serialization/f:JsonConventionResolver.cs" caret="2289" fromTop="34" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Serialization/f:JsonConventionResolver.cs" caret="0" fromTop="0" />
+      <File id="8AA442EB-5565-4171-8964-4DB5CECF5423/d:Serialization/f:JsonConventionResolver.cs" caret="451" fromTop="16" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir IsNull="False">
+    </NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="livetemplates.csharp.usevar">True</setting>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <CompletionStatisticsManager>
+    <ItemStatistics item="CSharpCodeCompletionContext">
+      <Item value="private" priority="898" />
+      <Item value="class" priority="90" />
+      <Item value="var" priority="371" />
+      <Item value="new" priority="310" />
+      <Item value="RestRequest" priority="28" />
+      <Item value="OAuthCredentials" priority="27" />
+      <Item value="Method" priority="31" />
+      <Item value="Path" priority="31" />
+      <Item value="return" priority="1766" />
+      <Item value="request" priority="61" />
+      <Item value="readonly" priority="154" />
+      <Item value="Func" priority="61" />
+      <Item value="FunctionArguments`0" priority="30" />
+      <Item value="RestRequest`0" priority="30" />
+      <Item value="RestClient`0" priority="30" />
+      <Item value="public" priority="865" />
+      <Item value="virtual" priority="588" />
+      <Item value="void" priority="278" />
+      <Item value="string" priority="652" />
+      <Item value="bool" priority="340" />
+      <Item value="enum" priority="59" />
+      <Item value="static" priority="183" />
+      <Item value="TypeNameHandling`0" priority="30" />
+      <Item value="WeiboConverterBase`0" priority="30" />
+      <Item value="Serialization" priority="29" />
+      <Item value="partial" priority="59" />
+      <Item value="_jsonSerializer" priority="31" />
+      <Item value="protected" priority="61" />
+      <Item value="SerializerBase`0" priority="61" />
+      <Item value="JsonSerializerSettings`0" priority="30" />
+      <Item value="settings" priority="62" />
+      <Item value="JsonSerializer" priority="55" />
+      <Item value="foreach" priority="30" />
+      <Item value="converter" priority="30" />
+      <Item value="this" priority="216" />
+      <Item value="JsonSerializerSettings" priority="27" />
+      <Item value="const" priority="92" />
+      <Item value="RegexPattern`0" priority="30" />
+      <Item value="IEnumerable" priority="30" />
+      <Item value="IComparable" priority="30" />
+      <Item value="WeiboEntities`0" priority="30" />
+      <Item value="IComparer" priority="30" />
+      <Item value="WeiboEntity`0" priority="30" />
+      <Item value="WeiboUrl`0" priority="30" />
+      <Item value="WeiboEntityType`0" priority="30" />
+      <Item value="EntityType" priority="62" />
+      <Item value="Url" priority="16" />
+      <Item value="IWeiboModel`0" priority="30" />
+      <Item value="IWeibo`0" priority="30" />
+      <Item value="WeiboServiceTests" priority="27" />
+      <Item value="WeiboService`0" priority="154" />
+      <Item value="_json" priority="30" />
+      <Item value="object" priority="30" />
+      <Item value="_client" priority="30" />
+      <Item value="RestClient" priority="27" />
+      <Item value="Constant`0" priority="63" />
+      <Item value="StartIndex" priority="30" />
+      <Item value="other" priority="216" />
+      <Item value="y" priority="30" />
+      <Item value="_consumerKey" priority="30" />
+      <Item value="_consumerSecret" priority="30" />
+      <Item value="internal" priority="91" />
+      <Item value="WeiboResponse`0" priority="30" />
+      <Item value="response" priority="123" />
+      <Item value="exception" priority="61" />
+      <Item value="_response" priority="123" />
+      <Item value="_exception" priority="30" />
+      <Item value="service" priority="216" />
+      <Item value="StatusCode" priority="31" />
+      <Item value="Uri`0" priority="30" />
+      <Item value="uri" priority="61" />
+      <Item value="FunctionArguments" priority="27" />
+      <Item value="_accessTokenQuery" priority="30" />
+      <Item value="_oauth" priority="30" />
+      <Item value="SetResponse`0" priority="30" />
+      <Item value="HttpUtility`0" priority="30" />
+      <Item value="OAuthAccessToken" priority="27" />
+      <Item value="Token" priority="30" />
+      <Item value="query" priority="31" />
+      <Item value="#region" priority="216" />
+      <Item value="#endif" priority="154" />
+      <Item value="#endregion" priority="123" />
+      <Item value="accessToken" priority="155" />
+      <Item value="requestToken" priority="61" />
+      <Item value="Process`0" priority="30" />
+      <Item value="WeiboService" priority="28" />
+      <Item value="_clientInfo" priority="31" />
+      <Item value="WeiboClientInfo`0" priority="61" />
+      <Item value="int" priority="61" />
+      <Item value="DateTime`0" priority="30" />
+      <Item value="_screenName" priority="92" />
+      <Item value="if" priority="1301" />
+      <Item value="value" priority="371" />
+      <Item value="OnPropertyChanged`0" priority="991" />
+      <Item value="_profileImageUrl" priority="61" />
+      <Item value="_province" priority="30" />
+      <Item value="_city" priority="30" />
+      <Item value="_location" priority="30" />
+      <Item value="_blogUrl" priority="30" />
+      <Item value="_domain" priority="30" />
+      <Item value="_gender" priority="30" />
+      <Item value="_friendsCount" priority="30" />
+      <Item value="_statusesCount" priority="30" />
+      <Item value="_favouritesCount" priority="30" />
+      <Item value="_createdAt" priority="61" />
+      <Item value="_verified" priority="30" />
+      <Item value="true" priority="185" />
+      <Item value="_name" priority="30" />
+      <Item value="_following" priority="30" />
+      <Item value="IFormatterConverter`0" priority="61" />
+      <Item value="_allowAllActMsg" priority="30" />
+      <Item value="_isGeoEnabled" priority="30" />
+      <Item value="IWeiboable`0" priority="30" />
+      <Item value="long" priority="30" />
+      <Item value="WeiboUser`0" priority="30" />
+      <Item value="DataContract" priority="30" />
+      <Item value="_id" priority="61" />
+      <Item value="_inReplyToScreenName" priority="61" />
+      <Item value="DataMember" priority="464" />
+      <Item value="_text" priority="61" />
+      <Item value="_createdDate" priority="61" />
+      <Item value="_source" priority="30" />
+      <Item value="_isFavorited" priority="30" />
+      <Item value="_inReplyToStatusId" priority="30" />
+      <Item value="_inReplyToUserId" priority="30" />
+      <Item value="_mid" priority="30" />
+      <Item value="_isTruncated" priority="30" />
+      <Item value="_user" priority="30" />
+      <Item value="_retweetedStatus" priority="30" />
+      <Item value="_thumbnailPic" priority="30" />
+      <Item value="_bmiddlePic" priority="30" />
+      <Item value="_originalPic" priority="30" />
+      <Item value="WeiboStatus`0" priority="124" />
+      <Item value="_status" priority="30" />
+      <Item value="user" priority="92" />
+      <Item value="Id" priority="216" />
+      <Item value="ReferenceEquals`0" priority="247" />
+      <Item value="null" priority="61" />
+      <Item value="false" priority="123" />
+      <Item value="override" priority="92" />
+      <Item value="obj" priority="61" />
+      <Item value="operator" priority="31" />
+      <Item value="status" priority="123" />
+      <Item value="typeof" priority="30" />
+      <Item value="Equals`0" priority="30" />
+      <Item value="_userStreamingClient" priority="61" />
+      <Item value="DecoderFallbackBuffer`0" priority="30" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Newtonsoft.Json.JsonSerializerSettings">
+      <Item value="Converters" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Newtonsoft.Json.JsonSerializer">
+      <Item value="Converters" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Newtonsoft.Json.JsonConverterCollection">
+      <Item value="Add`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@MiniWeibo.Net.Common.Core.RegexPattern">
+      <Item value="Url" priority="26" />
+      <Item value="Mentions" priority="26" />
+      <Item value="HashTags" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Int32">
+      <Item value="CompareTo`0" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:MiniWeibo.Net.Common.WeiboEntity">
+      <Item value="StartIndex" priority="80" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:MiniWeibo.Net.Common.WeiboService">
+      <Item value="GetRequestToken`0" priority="53" />
+      <Item value="GetAccessToken`0" priority="26" />
+      <Item value="GetAuthorizationUri`0" priority="26" />
+      <Item value="AuthenticateWith`0" priority="26" />
+      <Item value="VerifyCredentials`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Hammock.RestResponseBase">
+      <Item value="StatusCode" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Net.HttpStatusCode">
+      <Item value="OK" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@NUnit.Framework.Assert">
+      <Item value="IsNotNull`0" priority="53" />
+      <Item value="NotNull`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Diagnostics.Process">
+      <Item value="Start`0" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Uri">
+      <Item value="ToString`0" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Func`2">
+      <Item value="Invoke`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Hammock.RestClient">
+      <Item value="Request`0" priority="26" />
+      <Item value="CancelStreaming`0" priority="53" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Compat.Web.HttpUtility">
+      <Item value="ParseQueryString`0" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:Hammock.RestResponse">
+      <Item value="Content" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.String">
+      <Item value="ToInt32`0" priority="27" />
+      <Item value="ToInt64`0" priority="27" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.String">
+      <Item value="Empty" priority="110" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:@System.Convert">
+      <Item value="ToInt64`0" priority="27" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:MiniWeibo.Net.Common.OAuthAccessToken">
+      <Item value="Token" priority="26" />
+      <Item value="TokenSecret" priority="26" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:MiniWeibo.Net.Common.WeiboUser">
+      <Item value="Id" priority="80" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:MiniWeibo.Net.Common.WeiboStatus">
+      <Item value="Id" priority="81" />
+    </ItemStatistics>
+    <ItemStatistics item="Qualified:System.Object">
+      <Item value="GetType`0" priority="26" />
+    </ItemStatistics>
+  </CompletionStatisticsManager>
+  <UnitTestSessions>
+    <Session>
+      <Name>Session #1</Name>
+      <Elements>
+        <UnitTestElement Provider="nUnit" Id="MiniWeibo.UnitTests.WeiboServiceTests" type="NUnitTestFixtureElement" Project="91966C09-1604-460B-B2A8-AE09FA776F7A" />
+        <UnitTestElement Provider="nUnit" Id="MiniWeibo.UnitTests.WeiboServiceTests.Can_make_protected_resource_request_with_access_token" ParentId="MiniWeibo.UnitTests.WeiboServiceTests" type="NUnitTestElement" TypeName="MiniWeibo.UnitTests.WeiboServiceTests" MethodName="Can_make_protected_resource_request_with_access_token" Project="91966C09-1604-460B-B2A8-AE09FA776F7A" />
+        <UnitTestElement Provider="nUnit" Id="MiniWeibo.UnitTests.WeiboServiceTests.Can_verify_credentials" ParentId="MiniWeibo.UnitTests.WeiboServiceTests" type="NUnitTestElement" TypeName="MiniWeibo.UnitTests.WeiboServiceTests" MethodName="Can_verify_credentials" Project="91966C09-1604-460B-B2A8-AE09FA776F7A" />
+        <UnitTestElement Provider="nUnit" Id="MiniWeibo.UnitTests.WeiboServiceTests.Can_verify_credentials2" ParentId="MiniWeibo.UnitTests.WeiboServiceTests" type="NUnitTestElement" TypeName="MiniWeibo.UnitTests.WeiboServiceTests" MethodName="Can_verify_credentials2" Project="91966C09-1604-460B-B2A8-AE09FA776F7A" />
+        <UnitTestElement Provider="nUnit" Id="MiniWeibo.UnitTests.WeiboServiceTests.CanExchangeForAccessToken" ParentId="MiniWeibo.UnitTests.WeiboServiceTests" type="NUnitTestElement" TypeName="MiniWeibo.UnitTests.WeiboServiceTests" MethodName="CanExchangeForAccessToken" Project="91966C09-1604-460B-B2A8-AE09FA776F7A" />
+        <UnitTestElement Provider="nUnit" Id="MiniWeibo.UnitTests.WeiboServiceTests.CanGetRequestToken" ParentId="MiniWeibo.UnitTests.WeiboServiceTests" type="NUnitTestElement" TypeName="MiniWeibo.UnitTests.WeiboServiceTests" MethodName="CanGetRequestToken" Project="91966C09-1604-460B-B2A8-AE09FA776F7A" />
+      </Elements>
+    </Session>
+  </UnitTestSessions>
+</Configuration>
