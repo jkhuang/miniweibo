@@ -35,6 +35,15 @@ namespace MiniWeibo.Net.Common.Serialization
             }
         }
 
+        /// <summary>
+        /// Creates properties for the given <see cref="T:Newtonsoft.Json.Serialization.JsonContract"/>.
+        /// </summary>
+        /// <param name="type">The type to create properties for.</param>
+        /// <param name="memberSerialization">The member serialization mode for the type.</param>
+        /// <returns>
+        /// Properties for the given <see cref="T:Newtonsoft.Json.Serialization.JsonContract"/>.
+        /// </returns>
+        /// ///
         protected override IList<JsonProperty> CreateProperties(Type type, MemberSerialization memberSerialization)
         {
             var properties = base.CreateProperties(type, memberSerialization);
@@ -48,6 +57,11 @@ namespace MiniWeibo.Net.Common.Serialization
             return result;
         }
 
+        /// <summary>
+        /// Pascals the case to element.
+        /// </summary>
+        /// <param name="input">The input.</param>
+        /// <returns></returns>
         private static string PascalCaseToElement(string input)
         {
             if (input.Length > 0 && char.IsLower(input[0]))
