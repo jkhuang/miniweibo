@@ -33,15 +33,11 @@
   <ItemGroup>
     <Reference Include="Hammock, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c148cfba29ed1a4d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\danielcrenna-tweetsharp-7c9e70c\src\packages\Hammock.1.2.7\lib\net35\Hammock.dll</HintPath>
+      <HintPath>E:\Work\Project\[C#]\master\hammock-master\bin\lib\3.5\Hammock.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=4.0.3.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\danielcrenna-tweetsharp-7c9e70c\src\packages\Newtonsoft.Json.4.0.3\lib\net35\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="OAuth.Net.Common, Version=0.8.1.1, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\OAuthNet-source-0.8.1.1\OAuth.Net-source-0.8.1.1\OAuth.Net.Common\bin\Debug\OAuth.Net.Common.dll</HintPath>
+      <HintPath>..\..\..\..\Newtonsoft.Json-master\Src\Newtonsoft.Json\bin\Release\Net35\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -49,6 +45,9 @@
     </Reference>
     <Reference Include="System.Runtime.Serialization">
       <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -74,21 +73,36 @@
     <Compile Include="Helpers.cs" />
     <Compile Include="IHttpRequest.cs" />
     <Compile Include="Model\Enums\WeiboEnums.cs" />
+    <Compile Include="Model\ICursored.cs" />
+    <Compile Include="Model\INumbered.cs" />
+    <Compile Include="Model\IVisiable.cs" />
     <Compile Include="Model\IWeiboable.cs" />
     <Compile Include="Model\IWeiboModel.cs" />
     <Compile Include="Model\OAuthAccessToken.cs" />
     <Compile Include="Model\OAuthRequestToken.cs" />
     <Compile Include="Model\WeiboAccount.cs" />
+    <Compile Include="Model\WeiboAnnotation.cs" />
     <Compile Include="Model\WeiboClientInfo.cs" />
+    <Compile Include="Model\WeiboComment.cs" />
+    <Compile Include="Model\WeiboCursorList.cs" />
+    <Compile Include="Model\WeiboDateTime.cs" />
+    <Compile Include="Model\WeiboEmotion.cs" />
     <Compile Include="Model\WeiboEntities.cs" />
+    <Compile Include="Model\WeiboGeoLocation.cs" />
+    <Compile Include="Model\WeiboIdInfo.cs" />
     <Compile Include="Model\WeiboResponse.cs" />
     <Compile Include="Model\WeiboStatus.cs" />
+    <Compile Include="Model\WeiboStatusCount.cs" />
     <Compile Include="Model\WeiboUrl.cs" />
     <Compile Include="Model\WeiboUser.cs" />
+    <Compile Include="Model\WeiboVisible.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Serialization\Converters\WeiboAnnotationConverter.cs" />
     <Compile Include="Serialization\Converters\WeiboConverterBase.cs" />
     <Compile Include="Serialization\Converters\WeiboDateTimeConverter.cs" />
+    <Compile Include="Serialization\Converters\WeiboWonkyBooleanConverter.cs" />
     <Compile Include="Serialization\JsonConventionResolver.cs" />
+    <Compile Include="Serialization\JsonSerializer.cs" />
     <Compile Include="Serialization\SerializerBase.cs" />
     <Compile Include="Service\WeiboService.cs" />
     <Compile Include="Service\WeiboService.OAuth.cs" />
@@ -101,6 +115,8 @@
       <LastGenOutput>WeiboService.cs</LastGenOutput>
     </None>
     <None Include="Generated\_WeiboService.Account.json" />
+    <None Include="Generated\_WeiboService.Comments.json" />
+    <None Include="Generated\_WeiboService.Statuses.json" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />

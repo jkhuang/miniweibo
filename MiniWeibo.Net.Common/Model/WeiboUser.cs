@@ -1,19 +1,15 @@
-﻿/******************************** Module Header ********************************
- * Module Name: WeiboUser.cs
- * Project:     MiniWeibo.Net.Common
- * Copyright (c) Jackson Huang.
- * 
- * Code Logic:
- * 
- * 
- * Corresponding Source:
- * http://open.weibo.com/wiki/User
- * 
- * History:
- * 2012-3-31 16:41:09 Jackson Huang Created
- * Websiet:
- * http://www.cnblogs.com/rush/
- * *******************************************************************************/
+﻿/*********************************************************************
+ * Project Name : System.Object[]
+ * File Name    : WeiboUser.cs
+ * Copyright (c): Jackson Huang
+ * Description  : 
+ * Reference    : 
+ * Author       : Jackson Huang
+ * Email        : j.k.jackson023{AT}gmail.com ( {AT} -> @ )
+ * Blog         : http://www.cnblogs.com/rush/
+ * Create On    : 2013-01-12 09:02:30
+ * *******************************************************************/
+
 
 using System;
 using System.Collections.Generic;
@@ -27,12 +23,8 @@ namespace MiniWeibo.Net.Common
     using System.Runtime.Serialization;
 
     using Hammock.Model;
-
     using Newtonsoft.Json;
 
-    /// <summary>
-    /// 
-    /// </summary>
     [Serializable]
     [DataContract]
     [DebuggerDisplay("{ScreenName}")]
@@ -44,7 +36,9 @@ namespace MiniWeibo.Net.Common
         /// <summary>
         /// Weibo ID.
         /// </summary>
-        private int _id;
+        private long _id;
+
+        private string _idSt;
 
         /// <summary>
         /// Weibo nickname.
@@ -210,9 +204,21 @@ namespace MiniWeibo.Net.Common
                 OnPropertyChanged("FollowersCount");
             }
         }
+        
+ 
 
+
+        /// <summary>
+        ///  Function Name: 
+        ///  Function Description: 
+        ///  Calls Relationship: 
+        ///  Input Parammeters: 
+        ///  Output Parameters: 
+        ///  Return Value: 
+        ///  Others: 
+        /// </summary>
         [DataMember]
-        public virtual int Id
+        public virtual long Id
         {
             get
             {
@@ -604,6 +610,12 @@ namespace MiniWeibo.Net.Common
             }
         }
 
+        public string IdSt
+        {
+            get { return _idSt; }
+            set { _idSt = value; }
+        }
+
         #endregion
 
         #region Members
@@ -711,5 +723,6 @@ namespace MiniWeibo.Net.Common
 
         #endregion
 
+        public string RawSource { get; set; }
     }
 }

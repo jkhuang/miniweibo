@@ -15,6 +15,8 @@
  * http://www.cnblogs.com/rush/
  * *******************************************************************************/
 
+using Newtonsoft.Json.Linq;
+
 namespace MiniWeibo.Net.Common
 {
     using System;
@@ -36,12 +38,34 @@ namespace MiniWeibo.Net.Common
 
             public string TokenSecret { get; set; }
 
+            public string AccessToken { get; set; }
+
             public string Verifier { get; set; }
 
             public string Username { get; set; }
 
             public string Password { get; set; }
+
+            public string CallbackUrl { get; set; }
+
+            public GrantType Type { get; set; }
         }
+
+        private readonly Func<FunctionArguments, RestRequest> _authorizationCodeQuery = args =>
+            {
+                var request = new RestRequest
+                    {
+                        Credentials = new OAuthCredentials()
+                            {
+                                ConsumerKey = args.ConsumerKey,
+                                ConsumerSecret = args.ConsumerSecret,
+                                CallbackUrl = args.CallbackUrl
+                            },
+                        Method = WebMethod.Get,
+                        Path = "/oauth2/authorize"
+                    };
+                return request;
+            };
 
         private readonly Func<FunctionArguments, RestRequest> _requestTokenQuery = args =>
             {
@@ -57,7 +81,7 @@ namespace MiniWeibo.Net.Common
                                     Type = OAuthType.RequestToken
                                 },
                         Method = WebMethod.Get,
-                        Path = "/oauth/request_token"
+                        Path = "/oauth2/authorize"
                     };
                 return request;
             };
@@ -66,20 +90,20 @@ namespace MiniWeibo.Net.Common
             {
                 var request = new RestRequest
                     {
-                        Credentials =
-                            new OAuthCredentials
-                                {
-                                    ConsumerKey = args.ConsumerKey,
-                                    ConsumerSecret = args.ConsumerSecret,
-                                    Token = args.Token,
-                                    TokenSecret = args.TokenSecret,
-                                    Verifier = args.Verifier,
-                                    ParameterHandling = OAuthParameterHandling.HttpAuthorizationHeader,
-                                    SignatureMethod = OAuthSignatureMethod.HmacSha1,
-                                    Type = OAuthType.AccessToken
-                                },
+                        ////Credentials =
+                        ////    new OAuthCredentials
+                        ////        {
+                        ////            ConsumerKey = args.ConsumerKey,
+                        ////            ConsumerSecret = args.ConsumerSecret,
+                        ////            Token = args.Token,
+                        ////            TokenSecret = args.TokenSecret,
+                        ////            Verifier = args.Verifier,
+                        ////            ParameterHandling = OAuthParameterHandling.HttpAuthorizationHeader,
+                        ////            SignatureMethod = OAuthSignatureMethod.HmacSha1,
+                        ////            Type = OAuthType.AccessToken
+                        ////        },
                         Method = WebMethod.Post,
-                        Path = "/oauth/access_token"
+                        Path = "/oauth2/access_token"
                     };
                 return request;
             };
@@ -92,12 +116,12 @@ namespace MiniWeibo.Net.Common
             Credentials = new OAuthCredentials
             {
                 Type = OAuthType.ProtectedResource,
-                SignatureMethod = OAuthSignatureMethod.HmacSha1,
+                ////SignatureMethod = OAuthSignatureMethod.HmacSha1,
                 ParameterHandling = OAuthParameterHandling.HttpAuthorizationHeader,
                 ConsumerKey = args.ConsumerKey,
                 ConsumerSecret = args.ConsumerSecret,
-                Token = args.Token,
-                TokenSecret = args.TokenSecret,
+                Token = args.AccessToken,
+                TokenSecret = args.AccessToken,
             }
         };
         return request;
@@ -161,19 +185,62 @@ namespace MiniWeibo.Net.Common
             var request = _requestTokenQuery.Invoke(args);
             if (!callback.IsNullOrBlank())
             {
-                request.AddParameter("oauth_callback", callback);
+                request.AddParameter("client_id", _consumerKey);
+                request.AddParameter("redirect_uri", callback);
             }
 
             var response = _oauth.Request(request);
 
             SetResponse(response);
 
-            var query = HttpUtility.ParseQueryString(response.Content);
+            ////var query = HttpUtility.ParseQueryString(response.Content);
+
+            var query = JObject.Parse(response.Content);
             var oauth = new OAuthRequestToken
             {
-                Token = query["oauth_token"] ?? "?",
-                TokenSecret = query["oauth_token_secret"] ?? "?",
-                OAuthCallbackConfirmed = Convert.ToBoolean(query["oauth_callback_confirmed"] ?? "false")
+                ////Token = query["oauth_token"] ?? "?",
+                ////TokenSecret = query["oauth_token_secret"] ?? "?",
+                ////OAuthCallbackConfirmed = Convert.ToBoolean(query["oauth_callback_confirmed"] ?? "false")
+            };
+
+            return oauth;
+        }
+
+        public virtual OAuthAccessToken GetAccessToken(string code, GrantType grantType)
+        {
+            var args = new FunctionArguments
+                {
+                    ConsumerKey = _consumerKey,
+                    ConsumerSecret = _consumerSecret,
+                };
+
+            var request = _accessTokenQuery.Invoke(args);
+            request.AddParameter("client_id", _consumerKey);
+            request.AddParameter("client_secret", _consumerSecret);
+            request.AddParameter("grant_type ", grantType.ToString());
+
+            if (grantType == GrantType.AuthorizationCode)
+            {
+                request.AddParameter("code", code);
+                request.AddParameter("redirect_uri", _callbackUrl);
+            }
+            else
+            {
+                request.AddParameter("username", _userName);
+                request.AddParameter("password", _passWord);
+            }
+
+            var response = _oauth.Request(request);
+
+            SetResponse(response);
+
+            ////var query = HttpUtility.ParseQueryString(response.Content);
+            var query = JObject.Parse(response.Content);
+            var oauth = new OAuthAccessToken()
+            {
+                Token = query["access_token"].ToString() ?? string.Empty,
+                ExpiresIn = query["expires_in"].ToString().ToInt32(),
+                UserId = query["uid"].ToString().ToInt64()
             };
 
             return oauth;
@@ -218,5 +285,38 @@ namespace MiniWeibo.Net.Common
             return GetRequestToken(null);
         }
 
+        public virtual string GetAuthorizationCode()
+        {
+            return string.Empty;
+        }
+
+        public virtual Uri GetRedirectUri(string callback)
+        {
+        
+            if (_callbackUrl.IsNullOrBlank())
+            {
+                _callbackUrl = callback;
+            }
+            var args = new FunctionArguments
+            {
+                ConsumerKey = _consumerKey,
+                ConsumerSecret = _consumerSecret,
+                CallbackUrl = _callbackUrl
+            };
+
+            ////var request = _requestTokenQuery.Invoke(args);
+            return new Uri("https://api.weibo.com/oauth2/authorize" + "?client_id=" + _consumerKey + "&redirect_uri=" + _callbackUrl);
+            
+            ////////if (!CallbackUrl.IsNullOrBlank())
+            ////////{
+            ////request.AddParameter("client_id", _consumerKey);
+            ////request.AddParameter("redirect_uri", _callbackUrl);
+            ////////}
+
+            ////var response = _oauth.Request(request);
+
+            ////SetResponse(response);
+            ////return null;
+        }
     }
 }

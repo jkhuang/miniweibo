@@ -155,5 +155,7 @@ namespace MiniWeibo.Net.Common
         }
 
         #endregion
+
+        public string RawSource { get; set; }
     }
 }

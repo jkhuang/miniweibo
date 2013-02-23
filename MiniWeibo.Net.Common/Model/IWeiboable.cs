@@ -21,12 +21,12 @@ namespace MiniWeibo.Net.Common
 
     public interface IWeiboable
     {
-        long Id { get; }
-        string Text { get; }
-        string TextAsHtml { get; }
-        IWeibo Author { get; }
-        DateTime CreatedDate { get; }
-        WeiboEntities Entities { get; }
+        ////long Id { get; }
+        ////string Text { get; }
+        ////string TextAsHtml { get; }
+        ////IWeibo Author { get; }
+        ////DateTime CreatedAt { get; }
+        ////WeiboEntities Entities { get; }
     }
 
     public interface IWeibo

@@ -18,7 +18,9 @@
    var methods = new List<MiniWeiboMethod>(10);
 
    var manifests = new string[] {
-	"_WeiboService.Account.json"
+	"_WeiboService.Account.json",
+	"_WeiboService.Statuses.json",
+	"_WeiboService.Comments.json"
 };
 
 foreach (var manifest in manifests)

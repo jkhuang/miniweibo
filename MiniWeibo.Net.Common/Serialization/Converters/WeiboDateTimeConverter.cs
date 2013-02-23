@@ -1,4 +1,6 @@
-﻿namespace MiniWeibo.Net.Common.Serialization
+﻿using Newtonsoft.Json;
+
+namespace MiniWeibo.Net.Common.Serialization
 {
     using System;
 
@@ -6,12 +8,27 @@
     {
         public override bool CanConvert(Type objectType)
         {
-            throw new NotImplementedException();
+            var t = (IsNullableType(objectType))
+                        ? Nullable.GetUnderlyingType(objectType)
+                        : objectType;
+#if !Smartphone && !NET20
+            return typeof(DateTime).IsAssignableFrom(t) || typeof(DateTimeOffset).IsAssignableFrom(t);
+#else
+            return typeof (DateTime).IsAssignableFrom(t);
+#endif
         }
 
-        public override object ReadJson(Newtonsoft.Json.JsonReader reader, Type objectType, object existingValue, Newtonsoft.Json.JsonSerializer serializer)
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, Newtonsoft.Json.JsonSerializer serializer)
         {
-            throw new NotImplementedException();
+            if (reader.TokenType == JsonToken.Null)
+            {
+                return null;
+            }
+
+            var value = reader.Value.ToString();
+            var date = WeiboDateTime.ConvertToDateTime(value);
+
+            return date;
         }
 
         /// <summary>

@@ -1,0 +1,59 @@
+﻿WeiboCursorList<WeiboStatus>, "statuses/public_timeline", ListWeibosOnPublicTimeline
+WeiboCursorList<WeiboStatus>, "statuses/public_timeline", ListWeibosOnPublicTimeline, int count
+WeiboCursorList<WeiboStatus>, "statuses/public_timeline", ListWeibosOnPublicTimeline, string source, string accessToken, int count
+
+WeiboCursorList<WeiboStatus>, "statuses/friends_timeline", ListWeibosOnFriendsTimeline
+
+WeiboCursorList<WeiboStatus>, "statuses/home_timeline", ListWeibosOnHomeTimeline
+
+WeiboIdInfo, "statuses/friends_timeline/ids", ListWeiboIdsOnFriendsTimeline
+
+WeiboCursorList<WeiboStatus>, "statuses/user_timeline", ListWeibosOnUserTimeline, long uid
+WeiboCursorList<WeiboStatus>, "statuses/user_timeline", ListWeibosOnUserTimeline, string screenName
+
+WeiboIdInfo, "statuses/user_timeline/ids", ListWeiboIdsOnUserTimeline
+
+WeiboCursorList<WeiboStatus>, "statuses/repost_timeline", ListWeibosOnRepostTimeline, long id
+
+WeiboIdInfo, "statuses/repost_timeline/ids", ListWeiboIdsOnRepostTimeline, long id
+
+WeiboCursorList<WeiboStatus>, "statuses/repost_by_me", ListWeiboRepostByMe
+
+WeiboCursorList<WeiboStatus>, "statuses/mentions", ListWeiboMentionMe
+
+WeiboIdInfo, "statuses/mentions/ids", ListWeiboIdsMentionMe
+
+WeiboCursorList<WeiboStatus>, "statuses/bilateral_timeline", ListWeibosOnBilateralTimeline
+
+WeiboStatus, "statuses/show", GetWeiboShow, long id
+
+string, "statuses/querymid", GetMid, long id, int type
+
+IEnumerable<WeiboStatusCount>, "statuses/count", BatchGetStatusCount, string ids
+
+//TODO
+//"statuses/to_me"
+//"statuses/to_me/ids"
+
+//TODO Not available api
+string, "statuses/go", GoToWeiboStatus, long uid, long id
+
+IEnumerable<WeiboEmotion>, "emotions", ListWeiboEmotions
+
+WeiboStatus, "statuses/repost":POST, RepostWeiboStatus, long id
+WeiboStatus, "statuses/repost":POST, RepostWeiboStatus, long id, string status
+
+WeiboStatus, "statuses/destroy":POST, DeleteWeiboStatus, long id
+
+WeiboStatus, "statuses/update":POST, PostWeiboStatus, string status
+
+WeiboStatus, "statuses/upload":POST, UploadImage, string status, string pic
+
+// TODO
+// statuses/upload_url_text
+
+// TODO
+// statuses/filter/create
+
+// TODO
+// statuses/mentions/shield

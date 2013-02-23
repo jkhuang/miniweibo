@@ -1,0 +1,3 @@
+﻿WeiboCursorList<WeiboComment>, "comments/show", ListWeiboCommentsShow, long id
+
+WeiboCursorList<WeiboComment>, "comments/by_me", ListWeiboCommentsByMe

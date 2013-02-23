@@ -9,3 +9,20 @@ F:\MyWork\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.Net.Common\bin\De
 F:\MyWork\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.Net.Common\obj\Debug\ResolveAssemblyReference.cache
 F:\MyWork\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.Net.Common\obj\Debug\MiniWeibo.Net.Common.dll
 F:\MyWork\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.Net.Common\obj\Debug\MiniWeibo.Net.Common.pdb
+E:\Work\Project\[C#]\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.Net.Common\obj\Debug\ResolveAssemblyReference.cache
+E:\Work\Project\[C#]\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.Net.Common\bin\Debug\MiniWeibo.Net.Common.dll
+E:\Work\Project\[C#]\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.Net.Common\bin\Debug\MiniWeibo.Net.Common.pdb
+E:\Work\Project\[C#]\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.Net.Common\bin\Debug\Hammock.dll
+E:\Work\Project\[C#]\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.Net.Common\bin\Debug\Newtonsoft.Json.dll
+E:\Work\Project\[C#]\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.Net.Common\bin\Debug\Hammock.pdb
+E:\Work\Project\[C#]\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.Net.Common\bin\Debug\Newtonsoft.Json.pdb
+E:\Work\Project\[C#]\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.Net.Common\bin\Debug\Newtonsoft.Json.xml
+E:\Work\Project\[C#]\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.Net.Common\obj\Debug\MiniWeibo.Net.Common.dll
+E:\Work\Project\[C#]\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.Net.Common\obj\Debug\MiniWeibo.Net.Common.pdb
+D:\Backup\我的文档\Dropbox\Project\miniweibo\MiniWeibo.Net.Common\bin\Debug\MiniWeibo.Net.Common.dll
+D:\Backup\我的文档\Dropbox\Project\miniweibo\MiniWeibo.Net.Common\bin\Debug\MiniWeibo.Net.Common.pdb
+D:\Backup\我的文档\Dropbox\Project\miniweibo\MiniWeibo.Net.Common\bin\Debug\Hammock.dll
+D:\Backup\我的文档\Dropbox\Project\miniweibo\MiniWeibo.Net.Common\bin\Debug\Hammock.pdb
+D:\Backup\我的文档\Dropbox\Project\miniweibo\MiniWeibo.Net.Common\obj\Debug\ResolveAssemblyReference.cache
+D:\Backup\我的文档\Dropbox\Project\miniweibo\MiniWeibo.Net.Common\obj\Debug\MiniWeibo.Net.Common.dll
+D:\Backup\我的文档\Dropbox\Project\miniweibo\MiniWeibo.Net.Common\obj\Debug\MiniWeibo.Net.Common.pdb

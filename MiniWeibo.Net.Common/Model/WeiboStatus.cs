@@ -1,9 +1,19 @@
-﻿
-
+﻿/*********************************************************************
+ * Project Name : MiniWeibo SDK
+ * File Name    : WeiboStatus.cs
+ * Copyright (c): Jackson Huang
+ * Description  : 
+ * Reference    : 
+ * Author       : Jackson Huang
+ * Email        : j.k.jackson023{AT}gmail.com ( {AT} -> @ )
+ * Blog         : http://www.cnblogs.com/rush/
+ * Create On    : 2013-01-15 09:09:57
+ * *******************************************************************/
 
 namespace MiniWeibo.Net.Common
 {
     using System;
+    using System.Collections.Generic;
     using System.Diagnostics;
     using System.Runtime.Serialization;
 
@@ -17,42 +27,27 @@ namespace MiniWeibo.Net.Common
     [JsonObject(MemberSerialization.OptIn)]
     public class WeiboStatus : PropertyChangedBase, IComparable<WeiboStatus>, IEquatable<WeiboStatus>, IWeiboModel, IWeiboable
     {
-
         #region Private fields
-        ////private DateTime _createdDate;
-        ////private long _id;
-        ////private string _text;
-        ////private string _source;
 
-        ////private bool? _isFavorited;
-
-        ////private bool? _isTruncated;
-        ////private string _geo;
-
-        ////private long _recipientStatusId;
-        ////private long _recipientUserId;
-        ////private string _recipientScreenName;
-
-        ////private long _mid;
-
-        ////private long _senderId;
-
-        ////private string _senderScreenName;
-
-        ////        private TwitterUser _sender;
-        ////private TwitterEntities _entities;
-
-
-        private DateTime _createdDate;
+        private DateTime _createdAt;
         private long _id;
+        private long? _mid;
+        private string _idStr;
         private string _text;
         private string _source;
         private bool? _isFavorited;
         private bool? _isTruncated;
-        private string _inReplyToScreenName;
         private long? _inReplyToStatusId;
         private long? _inReplyToUserId;
-
+        private string _inReplyToScreenName;
+        private WeiboGeoLocation _geo;
+        private WeiboUser _user;
+        private List<WeiboAnnotation> _annotations; //= new List<WeiboAnnotation>();
+        private int _repostsCount;
+        private int _commentsCount;
+        private int _attitudesCount;
+        private int _mLevel;
+        private WeiboVisible _visible;
 
         /// <summary>
         /// 缩略图
@@ -69,20 +64,11 @@ namespace MiniWeibo.Net.Common
         /// </summary>
         private string _originalPic;
 
-        private long _mid;
-
         private WeiboStatus _retweetedStatus;
-        private WeiboUser _user;
-
-        ////private TwitterGeoLocation _location;
-        ////private TwitterEntities _entities;
-        ////private bool? _isPossiblySensitive;
-        ////private TwitterPlace _place;
 
         #endregion
 
         #region Properties
-
 
         [DataMember]
         public virtual long Id
@@ -129,30 +115,30 @@ namespace MiniWeibo.Net.Common
             }
         }
 
-        [DataMember]
-        public IWeibo Author
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-        }
+        ////[DataMember]
+        ////public IWeibo Author
+        ////{
+        ////    get
+        ////    {
+        ////        throw new NotImplementedException();
+        ////    }
+        ////}
 
         [DataMember]
-        public DateTime CreatedDate
+        public DateTime CreatedAt
         {
             get
             {
-                return _createdDate;
+                return _createdAt;
             }
             set
             {
-                if (_createdDate == value)
+                if (_createdAt == value)
                 {
                     return;
                 }
-                this._createdDate = value;
-                this.OnPropertyChanged("CreatedDate");
+                _createdAt = value;
+                OnPropertyChanged("CreatedAt");
             }
         }
 
@@ -256,7 +242,7 @@ namespace MiniWeibo.Net.Common
         }
 
         [DataMember]
-        public long Mid
+        public long? Mid
         {
             get
             {
@@ -377,7 +363,7 @@ namespace MiniWeibo.Net.Common
         {
             get
             {
-                return this._originalPic;
+                return _originalPic;
             }
             set
             {
@@ -385,14 +371,88 @@ namespace MiniWeibo.Net.Common
                 {
                     return;
                 }
-                this._originalPic = value;
-                this.OnPropertyChanged("OriginalPic");
+                _originalPic = value;
+                OnPropertyChanged("OriginalPic");
             }
+        }
+
+        [DataMember]
+        public string IdStr
+        {
+            get { return _idStr; }
+            set { _idStr = value; }
+        }
+
+        ////[DataMember]
+        public WeiboGeoLocation Geo
+        {
+            get { return _geo; }
+            set { _geo = value; }
+        }
+
+        [DataMember]
+        public List<WeiboAnnotation> Annotations
+        {
+            get
+            {
+                return _annotations;
+            }
+            set
+            {
+                if (_annotations == value)
+                {
+                    return;
+                }
+                _annotations = value;
+                OnPropertyChanged("Annotations");
+            }
+            ////get { return _annotations; }
+            ////set { _annotations = value; }
+        }
+
+        [DataMember]
+        public int RepostsCount
+        {
+            get { return _repostsCount; }
+            set { _repostsCount = value; }
+        }
+
+        [DataMember]
+        public int CommentsCount
+        {
+            get { return _commentsCount; }
+            set { _commentsCount = value; }
+        }
+
+        [DataMember]
+        public int AttitudesCount
+        {
+            get { return _attitudesCount; }
+            set { _attitudesCount = value; }
+        }
+
+        [DataMember]
+        public int MLevel
+        {
+            get { return _mLevel; }
+            set { _mLevel = value; }
+        }
+
+        [DataMember]
+        public WeiboVisible Visible
+        {
+            get { return _visible; }
+            set { _visible = value; }
         }
 
         #endregion
 
         #region Members
+
+        ////public WeiboStatus()
+        ////{
+        ////    _annotations = new List<WeiboAnnotation>();
+        ////}
 
         public override bool Equals(object status)
         {
@@ -452,5 +512,7 @@ namespace MiniWeibo.Net.Common
         }
 
         #endregion
+
+        public string RawSource { get; set; }
     }
 }
