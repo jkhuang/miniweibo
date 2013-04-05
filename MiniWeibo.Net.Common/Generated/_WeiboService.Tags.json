@@ -1,0 +1,5 @@
+﻿////"statuses/tags"
+
+IEnumerable<WeiboUserTag>, "tags", ListOfUserTags, long uid
+
+IEnumerable<WeiboUserTags>, "tags/tags_batch", BatchGetUserTags, string uids

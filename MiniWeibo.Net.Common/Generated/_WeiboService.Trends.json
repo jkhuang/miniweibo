@@ -1,0 +1,16 @@
+﻿IEnumerable<WeiboTrendInfo>, "trends", ListOfWeiboTrendsInfo, long uid
+
+WeiboTrendInfo, "trends/is_follow", IsFollowTrends, string trendName  
+
+WeiboTrends, "trends/hourly", ListOfHourlyTrends
+
+WeiboTrends, "trends/daily", ListOfDailyTrends
+
+WeiboTrends, "trends/weekly", ListOfWeeklyTrends
+
+long, "trends/follow":POST, FollowTrends, string trendName
+
+bool, "trends/destroy":POST, UnfollowTrends, long trendId 
+
+
+

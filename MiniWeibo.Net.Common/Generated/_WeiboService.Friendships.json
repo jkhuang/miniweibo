@@ -1,0 +1,34 @@
+﻿WeiboCursorList<WeiboUser>, "friendships/friends", ListWeiboFriendships, long uid
+
+IEnumerable<WeiboFriendRemark>, "friendships/friends/remark_batch", BatchGetWeiboFriendsRemark, long uids
+IEnumerable<WeiboFriendRemark>, "friendships/friends/remark_batch", BatchGetWeiboFriendsRemark, string source, string uids
+
+WeiboCursorList<WeiboUser>, "friendships/friends/in_common", ListWeiboFriendsInCommon, long uid, long suid
+
+WeiboCursorList<WeiboUser>, "friendships/friends/bilateral", ListWeiboFriendsBilateral, long uid
+
+WeiboCursorList<long>, "friendships/friends/bilateral/ids", ListWeiboFriendsBilateralIds, long uid
+
+WeiboCursorList<long>, "friendships/friends/ids", ListWeiboFriendsIds, long uid
+
+WeiboCursorList<WeiboUser>, "friendships/followers", ListWeiboFriendshipsFollowers, long uid
+
+WeiboCursorList<long>, "friendships/followers/ids", ListWeiboFriendshipsFollowersIds, long uid
+
+WeiboCursorList<WeiboUser>, "friendships/followers/active", ListWeiboFriendshipsActiveFollowers, long uid
+
+WeiboCursorList<WeiboUser>, "friendships/friends_chain/followers", ListWeiboFriendshipsFriendsChain, long uid
+
+WeiboRelation, "friendships/show", WeiboFriendshipsShow, long sourceId, long targetId
+
+WeiboUser, "friendships/create":POST, WeiboFriendshipsCreate, string screenName
+
+WeiboUser, "friendships/destroy":POST, WeiboFriendshipsDelete, string screenName
+
+WeiboUser, "friendships/followers/destroy":POST, WeiboFriendshipsFollowersDelete, string source, long uid
+
+WeiboUser, "friendships/remark/update":POST, WeiboFriendshipsRemarkUpdate, long uid, string remark 
+
+WeiboCursorList<WeiboUser>, "friendships/groups", WeiboFriendshipsGroups
+
+WeiboCursorList<WeiboStatus>, "friendships/groups/timeline", ListWeibosOnGroupsTimeline, long listId

@@ -20,7 +20,12 @@
    var manifests = new string[] {
 	"_WeiboService.Account.json",
 	"_WeiboService.Statuses.json",
-	"_WeiboService.Comments.json"
+	"_WeiboService.Comments.json",
+	"_WeiboService.Users.json",
+	"_WeiboService.Friendships.json",
+	"_WeiboService.Favorites.json",
+	"_WeiboService.Trends.json",
+	"_WeiboService.Tags.json"
 };
 
 foreach (var manifest in manifests)

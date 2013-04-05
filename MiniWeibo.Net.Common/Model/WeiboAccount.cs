@@ -40,103 +40,23 @@ namespace MiniWeibo.Net.Common
                                   IWeiboModel
     {
 
-        private bool _isCommented;
-        private bool _isDm;
+        [DataMember]
+        public int Badge { get; set; }
 
-        private bool _discoverableByRealName;
-        private bool _geoEnabled;
+        [DataMember]
+        public int Comment { get; set; }
 
-        private bool _badge;
+        [DataMember]
+        public int Geo { get; set; }
 
-        public virtual bool IsCommented
-        {
-            get
-            {
-                return this._isCommented;
-            }
-            set
-            {
-                if (_isCommented == value)
-                {
-                    return;
-                }
+        [DataMember]
+        public int Message { get; set; }
 
-                _isCommented = value;
-                OnPropertyChanged("IsCommented");
-            }
-        }
+        [DataMember]
+        public int Mobile { get; set; }
 
-        public virtual bool IsDm
-        {
-            get
-            {
-                return this._isDm;
-            }
-            set
-            {
-                if (_isDm == value)
-                {
-                    return;
-                }
-
-                _isDm = value;
-                OnPropertyChanged("IsDm");
-            }
-        }
-
-        public virtual bool DiscoverableByRealName
-        {
-            get
-            {
-                return this._discoverableByRealName;
-            }
-            set
-            {
-                if (_discoverableByRealName == value)
-                {
-                    return;
-                }
-
-                _discoverableByRealName = value;
-                OnPropertyChanged("DiscoverableByRealName");
-            }
-        }
-
-        public virtual bool GeoEnabled
-        {
-            get
-            {
-                return this._geoEnabled;
-            }
-            set
-            {
-                if (_geoEnabled == value)
-                {
-                    return;
-                }
-
-                _geoEnabled = value;
-                OnPropertyChanged("GeoEnabled");
-            }
-        }
-
-        public virtual bool Badge
-        {
-            get
-            {
-                return this._badge;
-            }
-            set
-            {
-                if (_badge == value)
-                {
-                    return;
-                }
-
-                _badge = value;
-                OnPropertyChanged("Badge");
-            }
-        }
+        [DataMember]
+        public int Realname { get; set; }
 
         #region Implementation of IComparable<WeiboAccount>
 

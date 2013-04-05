@@ -31,6 +31,7 @@ E:\Work\Project\[C#]\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.UnitTe
 E:\Work\Project\[C#]\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.UnitTests\obj\Debug\ResolveAssemblyReference.cache
 E:\Work\Project\[C#]\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.UnitTests\obj\Debug\MiniWeibo.UnitTests.dll
 E:\Work\Project\[C#]\Enterprise Design Pattern\GitHub\miniweibo\MiniWeibo.UnitTests\obj\Debug\MiniWeibo.UnitTests.pdb
+D:\Backup\我的文档\Dropbox\Project\miniweibo\MiniWeibo.UnitTests\obj\Debug\ResolveAssemblyReference.cache
 D:\Backup\我的文档\Dropbox\Project\miniweibo\MiniWeibo.UnitTests\bin\Debug\MiniWeibo.UnitTests.dll.config
 D:\Backup\我的文档\Dropbox\Project\miniweibo\MiniWeibo.UnitTests\bin\Debug\MiniWeibo.UnitTests.dll
 D:\Backup\我的文档\Dropbox\Project\miniweibo\MiniWeibo.UnitTests\bin\Debug\MiniWeibo.UnitTests.pdb
@@ -43,6 +44,5 @@ D:\Backup\我的文档\Dropbox\Project\miniweibo\MiniWeibo.UnitTests\bin\Debug\N
 D:\Backup\我的文档\Dropbox\Project\miniweibo\MiniWeibo.UnitTests\bin\Debug\Hammock.pdb
 D:\Backup\我的文档\Dropbox\Project\miniweibo\MiniWeibo.UnitTests\bin\Debug\Hammock.ClientProfile.pdb
 D:\Backup\我的文档\Dropbox\Project\miniweibo\MiniWeibo.UnitTests\bin\Debug\MiniWeibo.Net.Common.pdb
-D:\Backup\我的文档\Dropbox\Project\miniweibo\MiniWeibo.UnitTests\obj\Debug\ResolveAssemblyReference.cache
 D:\Backup\我的文档\Dropbox\Project\miniweibo\MiniWeibo.UnitTests\obj\Debug\MiniWeibo.UnitTests.dll
 D:\Backup\我的文档\Dropbox\Project\miniweibo\MiniWeibo.UnitTests\obj\Debug\MiniWeibo.UnitTests.pdb

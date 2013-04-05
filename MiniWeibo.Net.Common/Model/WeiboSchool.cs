@@ -1,19 +1,27 @@
 ﻿/*********************************************************************
  * Project Name : MiniWeibo SDK
- * File Name    : INumbered.cs
+ * File Name    : WeiboSchool.cs
  * Copyright (c): Jackson Huang
  * Description  : 
  * Reference    : 
  * Author       : Jackson Huang
  * Email        : j.k.jackson023{AT}gmail.com ( {AT} -> @ )
  * Blog         : http://www.cnblogs.com/rush/
- * Create On    : 2013-01-14 09:43:42
+ * Create On    : 2013-03-27 09:26:26
  * *******************************************************************/
+
+using System.Runtime.Serialization;
 
 namespace MiniWeibo.Net.Common
 {
-    interface INumbered
+    public class WeiboSchool : IWeiboModel
     {
-        long? TotalNumber { get; set; }
+        [DataMember]
+        public string Id { get; set; }
+
+        [DataMember]
+        public string Name { get; set; }
+
+        public string RawSource { get; set; }
     }
 }

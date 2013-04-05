@@ -1,3 +1,19 @@
 ﻿WeiboCursorList<WeiboComment>, "comments/show", ListWeiboCommentsShow, long id
 
 WeiboCursorList<WeiboComment>, "comments/by_me", ListWeiboCommentsByMe
+
+WeiboCursorList<WeiboComment>, "comments/to_me", ListWeiboCommentsToMe
+
+WeiboCursorList<WeiboComment>, "comments/timeline", ListWeiboCommentsTimeline
+
+WeiboCursorList<WeiboComment>, "comments/mentions", ListWeiboCommentsMentionsMe
+
+WeiboCursorList<WeiboComment>, "comments/show_batch", BatchGetWeiboCommentsShow, string cids
+
+WeiboComment, "comments/create":POST, CreateWeiboComment, string comment, long id,
+
+WeiboComment, "comments/destroy":POST, DeleteWeiboComment, long cid
+
+IEnumerable<WeiboComment>, "comments/destroy_batch":POST, BatchDeleteWeiboComments, string cids
+
+WeiboComment, "comments/reply":POST, ReplyWeiboComments, long cid, long id, string comment

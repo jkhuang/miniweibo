@@ -27,7 +27,7 @@ namespace MiniWeibo.Net.Common
         public virtual long? PreviousCursor { get; set; }
 
         [DataMember]
-        public long? TotalNumbe { get; set; }
+        public long? TotalNumber { get; set; }
 
         [DataMember]
         public bool? HasVisible { get; set; }
@@ -57,7 +57,7 @@ namespace MiniWeibo.Net.Common
     ////    public virtual long? PreviousCursor { get; set; }
 
     ////    [DataMember]
-    ////    public long? TotalNumbe { get; set; }
+    ////    public long? TotalNumber { get; set; }
 
     ////    [DataMember]
     ////    public bool? HasVisible { get; set; }

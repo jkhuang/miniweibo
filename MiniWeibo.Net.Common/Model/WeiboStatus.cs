@@ -29,7 +29,7 @@ namespace MiniWeibo.Net.Common
     {
         #region Private fields
 
-        private DateTime _createdAt;
+        private DateTime? _createdAt;
         private long _id;
         private long? _mid;
         private string _idStr;
@@ -51,7 +51,7 @@ namespace MiniWeibo.Net.Common
 
         /// <summary>
         /// 缩略图
-        /// </summary>
+        /// </summary>  
         private string _thumbnailPic;
 
         /// <summary>
@@ -65,6 +65,8 @@ namespace MiniWeibo.Net.Common
         private string _originalPic;
 
         private WeiboStatus _retweetedStatus;
+
+        private string _deleted;
 
         #endregion
 
@@ -125,7 +127,7 @@ namespace MiniWeibo.Net.Common
         ////}
 
         [DataMember]
-        public DateTime CreatedAt
+        public DateTime? CreatedAt
         {
             get
             {
@@ -514,5 +516,12 @@ namespace MiniWeibo.Net.Common
         #endregion
 
         public string RawSource { get; set; }
+
+        [DataMember]
+        public string Deleted
+        {
+            get { return _deleted; }
+            set { _deleted = value; }
+        }
     }
 }

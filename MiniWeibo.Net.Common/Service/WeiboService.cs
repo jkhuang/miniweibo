@@ -227,6 +227,12 @@ namespace MiniWeibo.Net.Common
             InitializeService();
         }
 
+        public WeiboService(string consumerKey)
+            : this()
+        {
+            _consumerKey = consumerKey;
+        }
+
         public WeiboService(string consumerKey, string consumerSecret)
             : this()
         {

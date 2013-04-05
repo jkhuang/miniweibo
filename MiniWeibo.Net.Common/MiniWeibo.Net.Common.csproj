@@ -84,17 +84,35 @@
     <Compile Include="Model\WeiboAnnotation.cs" />
     <Compile Include="Model\WeiboClientInfo.cs" />
     <Compile Include="Model\WeiboComment.cs" />
+    <Compile Include="Model\WeiboCount.cs" />
     <Compile Include="Model\WeiboCursorList.cs" />
     <Compile Include="Model\WeiboDateTime.cs" />
     <Compile Include="Model\WeiboEmotion.cs" />
     <Compile Include="Model\WeiboEntities.cs" />
+    <Compile Include="Model\WeiboFavorite.cs" />
+    <Compile Include="Model\WeiboFavoriteId.cs" />
+    <Compile Include="Model\WeiboFavoriteTag.cs" />
+    <Compile Include="Model\WeiboFriendRemark.cs" />
+    <Compile Include="Model\WeiboLimit.cs" />
+    <Compile Include="Model\WeiboRelation.cs" />
     <Compile Include="Model\WeiboGeoLocation.cs" />
     <Compile Include="Model\WeiboIdInfo.cs" />
+    <Compile Include="Model\WeiboRelationSource.cs" />
+    <Compile Include="Model\WeiboRelationTarget.cs" />
     <Compile Include="Model\WeiboResponse.cs" />
+    <Compile Include="Model\WeiboSchool.cs" />
     <Compile Include="Model\WeiboStatus.cs" />
     <Compile Include="Model\WeiboStatusCount.cs" />
+    <Compile Include="Model\WeiboTags.cs" />
+    <Compile Include="Model\WeiboTrend.cs" />
+    <Compile Include="Model\WeiboTrendInfo.cs" />
+    <Compile Include="Model\WeiboTrends.cs" />
     <Compile Include="Model\WeiboUrl.cs" />
     <Compile Include="Model\WeiboUser.cs" />
+    <Compile Include="Model\WeiboUserRank.cs" />
+    <Compile Include="Model\WeiboUserTag.cs" />
+    <Compile Include="Model\WeiboUserTags.cs" />
+    <Compile Include="Model\WeiboUserTopStatus.cs" />
     <Compile Include="Model\WeiboVisible.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serialization\Converters\WeiboAnnotationConverter.cs" />
@@ -120,6 +138,13 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Generated\_WeiboService.Favorites.json" />
+    <None Include="Generated\_WeiboService.Friendships.json" />
+    <None Include="Generated\_WeiboService.Tags.json" />
+    <None Include="Generated\_WeiboService.Trends.json" />
+    <None Include="Generated\_WeiboService.Users.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

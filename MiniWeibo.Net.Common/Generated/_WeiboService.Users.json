@@ -1,0 +1,11 @@
+﻿WeiboUser, "users/show", WeiboUsersShow, long uid
+WeiboUser, "users/show", WeiboUsersShow, string screenName
+
+WeiboUser, "users/domain_show", WeiboUsersDomainShow, string domain
+
+IEnumerable<WeiboCount>, "users/counts", WeiboUsersCounts, string uids
+
+WeiboUserRank, "users/show_rank", WeiboUsersRank, long uid
+
+WeiboUserTopStatus, "users/get_top_status", WeiboUsersTopStatus, long uid
+WeiboUserTopStatus, "users/get_top_status", WeiboUsersTopStatus, string source, long uid

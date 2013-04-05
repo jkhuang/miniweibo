@@ -1,0 +1,22 @@
+﻿WeiboCursorList<WeiboFavorite>, "favorites", ListOfWeiboFavorites
+WeiboCursorList<WeiboFavoriteId>, "favorites/ids", ListOfWeiboFavoriteIds
+
+WeiboFavorite, "favorites/show", WeiboFavoriteShow, long id
+
+WeiboCursorList<WeiboFavorite>, "favorites/by_tags", ListOfWeiboFavoritesByTag, long tid
+
+WeiboCursorList<WeiboTags>, "favorites/tags", ListOfWeiboFavoriteTags
+
+WeiboCursorList<WeiboFavoriteId>, "favorites/by_tags/ids", ListOfWeiboFavoriteIdsByTag, long tid
+
+WeiboFavorite, "favorites/create":POST, AddFavorite, long id
+
+WeiboFavorite, "favorites/destroy":POST, DeleteFavorite, long id 
+
+bool, "favorites/destroy_batch":POST, BatchDeleteFavorite, string ids
+
+WeiboFavorite, "favorites/tags/update":POST, UpdateFavoritesTags, long id, string tags
+
+WeiboTags, "favorites/tags/update_batch":POST, BatchUpdateFavoritesTags, long tid, string tag
+
+bool, "favorites/tags/destroy_batch":POST, BatchDeleteFavoritesTags, long tid

@@ -48,16 +48,52 @@ namespace MiniWeibo.Net.Common.Serialization
 
         internal T DeserializeContent<T>(string content)
         {
+
+            if (typeof(T) == typeof(WeiboTrends))
+            {
+                return DeserializeTrends<T>(content);
+            }
+
+            if (typeof(T) == typeof(IEnumerable<WeiboUserTag>) || typeof(T) == typeof(IEnumerable<WeiboUserTags>))
+            {
+                return DeserializeTags<T>(content);
+            }
+
             if (typeof(T) == typeof(WeiboIdInfo))
             {
                 return DeserializeIds<T>(content);
             }
 
-            if (typeof (T) == typeof (string))
+            if (typeof(T) == typeof(string))
             {
                 JObject o = JObject.Parse(content);
-                var mid = o["mid"].ToString();
-                return (T)(object)mid;
+                ////var result = o["mid"].ToString();
+                IList<string> keys = o.Properties().Select(p => p.Name).ToList();
+                var result = o[keys[0]].ToString();
+                if (string.IsNullOrEmpty(result))
+                {
+                    result = o["result"].ToString();
+                }
+                return (T)(object)result;
+            }
+
+            if (typeof(T) == typeof(long))
+            {
+                JObject o = JObject.Parse(content);
+                ////var uid = o["uid"].ToString();
+                //// http://snowm.blog.163.com/blog/static/20707720020124833032178/
+                IList<string> keys = o.Properties().Select(p => p.Name).ToList();
+                var result = o[keys[0]].ToString();
+                return (T)Convert.ChangeType(result, typeof(T));
+            }
+
+            if (typeof(T) == typeof(bool))
+            {
+                JObject o = JObject.Parse(content);
+                IList<string> keys = o.Properties().Select(p => p.Name).ToList();
+                var result = o[keys[0]].ToString();
+                //// http://snowm.blog.163.com/blog/static/20707720020124833032178/
+                return (T)Convert.ChangeType(result, typeof(T));
             }
 
             var wantsCollection = typeof(IEnumerable).IsAssignableFrom(typeof(T));
@@ -85,6 +121,11 @@ namespace MiniWeibo.Net.Common.Serialization
                 return deserialized;
             }
 
+            ////if (typeof(T) == typeof(WeiboFavorites))
+            ////{
+            ////    return DeserializeFavorites<T>(content);
+            ////}
+
             IList collection;
             var type = ConstructCollection<T>(out collection);
 
@@ -105,10 +146,16 @@ namespace MiniWeibo.Net.Common.Serialization
                 // Due to Json.net deserizes an empty json array with exception.
                 // For instacne Annotations is empty.
                 // Reference: http://stackoverflow.com/questions/13204663/parsing-nested-json-objects-with-json-net
-                content = content.Replace("[]", "{}");
+                // http://publib.boulder.ibm.com/infocenter/dmndhelp/v6r1mx/index.jsp?topic=/com.ibm.wbit.610.help.config.doc/topics/rjsonnullunsempprops.html
+                ////content = content.Replace("[]", "{}");
                 instance = ParseInnerContent<T>("statuses", content, cursor, instance, ref array);
                 instance = ParseInnerContent<T>("reposts", content, cursor, instance, ref array);
                 instance = ParseInnerContent<T>("comments", content, cursor, instance, ref array);
+                instance = ParseInnerContent<T>("users", content, cursor, instance, ref array);
+                instance = ParseInnerContent<T>("ids", content, cursor, instance, ref array);
+                instance = ParseInnerContent<T>("favorites", content, cursor, instance, ref array);
+                instance = ParseInnerContent<T>("tags", content, cursor, instance, ref array);
+
 
                 if (null == array)
                 {
@@ -139,13 +186,132 @@ namespace MiniWeibo.Net.Common.Serialization
                 return deserialized;
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 throw;
             }
         }
 
+
+
+        private T DeserializeTags<T>(string content)
+        {
+            var result = DeserializeCollection<T>(content);
+            if (typeof(T) == typeof(IEnumerable<WeiboUserTag>))
+            {
+                var tags = result as IEnumerable<WeiboUserTag>;
+                if (tags != null)
+                {
+                    ////var result = new WeiboUserTag {RawSource = content};
+                    foreach (var item in tags)
+                    {
+                        var instance = JObject.Parse(item.RawSource);
+                        foreach (JToken child in instance.First.Children())
+                        {
+
+                            item.UserTagId = long.Parse(child.Path);
+                            item.UserTagName = child.ToString();
+                        }
+                    }
+                }
+                return (T)tags;
+            }
+            else
+            {
+                var tags = result as IEnumerable<WeiboUserTags>;
+                if (tags != null)
+                {
+                    ////var result = new WeiboUserTag {RawSource = content};
+                    foreach (var item in tags)
+                    {
+                        ////item.Tags.Ad
+                        ////item.Tags.AddRange();
+                        var instance = JObject.Parse(item.RawSource.Substring(item.RawSource.IndexOf("tags")));
+                        var tagsList = DeserializeTags<IEnumerable<WeiboUserTag>>(item.RawSource.Substring(item.RawSource.IndexOf("tags")));
+                        ////foreach (JToken child in instance.First.Children())
+                        ////{
+
+                        ////    ////item
+                        ////    ////item.Tags. = long.Parse(child.Path);
+                        ////    ////item.UserTagName = child.ToString();
+                        ////}
+                        item.Tags.AddRange(tagsList);
+                    }
+                }
+                return (T)tags; 
+            }
+
+
+
+        }
+
+        private T DeserializeTrends<T>(string content)
+        {
+            var instance = JObject.Parse(content);
+            var inner = instance["trends"];
+            if (inner != null)
+            {
+                var result = new WeiboTrends { RawSource = content };
+
+                var asOf = instance["as_of"] != null ? instance["as_of"].ToString() : "0";
+                result.AsOf = Convert.ToInt64(asOf).FromUnixTime();
+
+                var dateBuckets = inner.Children();
+
+                foreach (var dateBucket in dateBuckets.OfType<JProperty>())
+                {
+                    var date = dateBucket.Name;
+                    var value = dateBucket.Value.ToString();
+
+                    var trends = DeserializeCollection<IEnumerable<WeiboTrend>>(value);
+                    foreach (var trend in trends)
+                    {
+                        trend.TrendingAsOf = Convert.ToDateTime(date);
+                    }
+
+                    result.Trends.AddRange(trends);
+                }
+
+                return (T)(IEnumerable)result;
+            }
+
+            return DeserializeSingle<T>(content);
+        }
+
+        private T DeserializeFavorites<T>(string content)
+        {
+            ////var instance = JObject.Parse(content);
+            ////var inner = instance["favorites"];
+            ////if (inner != null)
+            ////{
+            ////    var result = new WeiboFavorites(){ RawSource = content };
+
+            ////    var asOf = instance["favorited_time"] != null ? instance["favorited_time"].ToString() : "0";
+            ////    result.FavoritedTime = Convert.ToInt64(asOf).FromUnixTime();
+
+            ////    var dateBuckets = inner.Children();
+
+            ////    foreach (var dateBucket in dateBuckets.OfType<JProperty>())
+            ////    {
+            ////        var date = dateBucket.Name;
+            ////        var value = dateBucket.Value.ToString();
+
+            ////        var trends = DeserializeCollection<IEnumerable<WeiboFavorite>>(value);
+            ////        foreach (var trend in trends)
+            ////        {
+            ////            ////trend.TrendingAsOf = Convert.ToDateTime(date);
+            ////        }
+
+            ////        result.Favorites.AddRange(trends);
+            ////    }
+
+            ////    return (T)(IEnumerable)result;
+            ////}
+
+            ////return DeserializeSingle<T>(content);
+            return default(T);
+        }
 
         private T DeserializeIds<T>(string content)
         {
@@ -207,15 +373,17 @@ namespace MiniWeibo.Net.Common.Serialization
                 var hasVisible = instance["hasvisible"];
                 ((ICursored)list).NextCursor = (long?)next;
                 ((ICursored)list).PreviousCursor = (long?)previous;
-                ((INumbered)list).TotalNumbe = (long?)totalNumber;
+                ((INumbered)list).TotalNumber = (long?)totalNumber;
 
-                bool restult;
-                ((IVisiable)list).HasVisible = false;
-                if (bool.TryParse(hasVisible.ToString(), out restult))
+                if (((IVisiable)list).HasVisible != null)
                 {
-                    ((IVisiable)list).HasVisible = restult;
+                    ((IVisiable)list).HasVisible = false;
+                    bool restult;
+                    if (bool.TryParse(hasVisible.ToString(), out restult))
+                    {
+                        ((IVisiable)list).HasVisible = restult;
+                    }
                 }
-
             }
 
             var deserialized = (T)list;
