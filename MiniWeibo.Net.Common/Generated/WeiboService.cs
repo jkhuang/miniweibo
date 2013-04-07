@@ -98,6 +98,7 @@ namespace MiniWeibo.Net.Common
 							bool UnfollowTrends(long trendId);	
 							IEnumerable<WeiboUserTag> ListOfUserTags(long uid);	
 							IEnumerable<WeiboUserTags> BatchGetUserTags(string uids);	
+							Dictionary<long,string> ListOfSuggestionTags();	
 					#endregion
 	}
 }
@@ -454,6 +455,10 @@ namespace MiniWeibo.Net.Common
 									public virtual IEnumerable<WeiboUserTags> BatchGetUserTags(string uids)
 						{
 							return WithHammock<IEnumerable<WeiboUserTags>>("tags/tags_batch", FormatAsString, "?uids=", uids);
+						}
+									public virtual Dictionary<long,string> ListOfSuggestionTags()
+						{
+							return WithHammock<Dictionary<long,string>>("tags/suggestions", FormatAsString);
 						}
 					#endregion
 	}

@@ -3,3 +3,5 @@
 IEnumerable<WeiboUserTag>, "tags", ListOfUserTags, long uid
 
 IEnumerable<WeiboUserTags>, "tags/tags_batch", BatchGetUserTags, string uids
+
+Dictionary<long^string>, "tags/suggestions", ListOfSuggestionTags

@@ -1827,11 +1827,33 @@ namespace MiniWeibo.UnitTests
             var result = service.BatchGetUserTags("1904178193,1287611181");
             Assert.IsNotNull(result);
 
-            ////foreach (var item in result)
-            ////{
-            ////    Console.WriteLine("Tag id: {0} Tag Number: {1} Weight: {2}", item.UserTagId, item.UserTagName, item.Weight);
-            ////}
+            foreach (var item in result)
+            {
+                Console.WriteLine("Tag id: {0}", item.Id);
+                if (item.Tags != null)
+                {
+                    foreach (var tag in item)
+                    {
+                        Console.WriteLine("User tag id: {0} User tag name: {1} Weight: {2}", 
+                            tag.UserTagId, tag.UserTagName, tag.Weight);
+                    }
+                }
+               
+            }
 
+        }
+
+        [Test]
+        public void Can_Get_Suggestion_Tags()
+        {
+            var service = new WeiboService(_consumerKey, _consumerSecret, _accessToken);
+            var result = service.ListOfSuggestionTags();
+            Assert.IsNotNull(result);
+
+            foreach (var item in result)
+            {
+                Console.WriteLine("Key: {0} Value: {1}", item.Key, item.Value);
+            }
 
         }
 

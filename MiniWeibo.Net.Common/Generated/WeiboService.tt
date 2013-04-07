@@ -132,7 +132,8 @@ namespace MiniWeibo.Net.Common
 		public MiniWeiboMethod(string line)
 		{
 		     var parts = line.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
-			 Type = parts[0].Trim();
+			 Type = parts[0].Trim().Replace("^", ",");
+			 
 			 
 			 var pathParts = parts[1].Trim().Split(new string[] { ":" }, StringSplitOptions.RemoveEmptyEntries);
 			 Path = pathParts[0];

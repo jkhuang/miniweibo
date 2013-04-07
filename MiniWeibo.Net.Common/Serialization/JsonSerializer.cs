@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Globalization;
 using System.Linq;
 using Hammock;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
 namespace MiniWeibo.Net.Common.Serialization
@@ -94,6 +96,12 @@ namespace MiniWeibo.Net.Common.Serialization
                 var result = o[keys[0]].ToString();
                 //// http://snowm.blog.163.com/blog/static/20707720020124833032178/
                 return (T)Convert.ChangeType(result, typeof(T));
+            }
+
+            if (typeof (T) == typeof (Dictionary<long, string>))
+            {
+                var result = JsonConvert.DeserializeObject<Dictionary<long, string>>(content);
+                return (T)(object)result;
             }
 
             var wantsCollection = typeof(IEnumerable).IsAssignableFrom(typeof(T));
@@ -197,13 +205,12 @@ namespace MiniWeibo.Net.Common.Serialization
 
         private T DeserializeTags<T>(string content)
         {
-            var result = DeserializeCollection<T>(content);
             if (typeof(T) == typeof(IEnumerable<WeiboUserTag>))
             {
+                var result = DeserializeCollection<T>(content);
                 var tags = result as IEnumerable<WeiboUserTag>;
                 if (tags != null)
                 {
-                    ////var result = new WeiboUserTag {RawSource = content};
                     foreach (var item in tags)
                     {
                         var instance = JObject.Parse(item.RawSource);
@@ -217,33 +224,37 @@ namespace MiniWeibo.Net.Common.Serialization
                 }
                 return (T)tags;
             }
-            else
+            ////var result = DeserializeCollection<WeiboUserTag>(content);
+            var jsonArray = JArray.Parse(content);
+            if (jsonArray != null)
             {
-                var tags = result as IEnumerable<WeiboUserTags>;
-                if (tags != null)
+                var result = new List<WeiboUserTags>();
+
+                foreach (var item in jsonArray)
                 {
-                    ////var result = new WeiboUserTag {RawSource = content};
-                    foreach (var item in tags)
+                    var first = (JProperty)item.First;
+                    var last = (JProperty)item.Last;
+                    var userTag = DeserializeCollection<IEnumerable<WeiboUserTag>>(last.Value.ToString());
+                    if (userTag != null)
                     {
-                        ////item.Tags.Ad
-                        ////item.Tags.AddRange();
-                        var instance = JObject.Parse(item.RawSource.Substring(item.RawSource.IndexOf("tags")));
-                        var tagsList = DeserializeTags<IEnumerable<WeiboUserTag>>(item.RawSource.Substring(item.RawSource.IndexOf("tags")));
-                        ////foreach (JToken child in instance.First.Children())
-                        ////{
+                        foreach (var tag in userTag)
+                        {
+                            var instance = JObject.Parse(tag.RawSource);
+                            foreach (JToken child in instance.First.Children())
+                            {
 
-                        ////    ////item
-                        ////    ////item.Tags. = long.Parse(child.Path);
-                        ////    ////item.UserTagName = child.ToString();
-                        ////}
-                        item.Tags.AddRange(tagsList);
+                                tag.UserTagId = long.Parse(child.Path);
+                                tag.UserTagName = child.ToString();
+                            }
+                        }
                     }
+                    result.Add(new WeiboUserTags{Id = long.Parse(first.Value.ToString()),
+                    Tags = userTag as List<WeiboUserTag>
+                    });
                 }
-                return (T)tags; 
+                return (T)(IEnumerable)result;
             }
-
-
-
+            return default(T);
         }
 
         private T DeserializeTrends<T>(string content)
