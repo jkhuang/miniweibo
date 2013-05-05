@@ -98,10 +98,10 @@ namespace MiniWeibo.Net.Common.Serialization
                 return (T)Convert.ChangeType(result, typeof(T));
             }
 
-            if (typeof (T) == typeof (Dictionary<long, string>))
+            if (typeof(T) == typeof(IEnumerable<Dictionary<string, string>>))
             {
-                var result = JsonConvert.DeserializeObject<Dictionary<long, string>>(content);
-                return (T)(object)result;
+                var result = JsonConvert.DeserializeObject<IEnumerable<Dictionary<string, string>>>(content);
+                return (T)result;
             }
 
             var wantsCollection = typeof(IEnumerable).IsAssignableFrom(typeof(T));

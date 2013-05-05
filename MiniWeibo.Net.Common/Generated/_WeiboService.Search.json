@@ -1,0 +1,12 @@
+﻿IEnumerable<WeiboSuggestionUser>, "search/suggestions/users", GetSuggestionUsers, string q
+
+IEnumerable<WeiboSuggestionSchool>, "search/suggestions/schools", GetSuggestionSchools, string q
+
+IEnumerable<WeiboSuggestionCompany>, "search/suggestions/companies", GetSuggestionCompanys, string q
+
+IEnumerable<WeiboSuggestionApp>, "search/suggestions/apps", GetSuggestionApps, string q
+
+IEnumerable<WeiboSuggestionUser>, "search/suggestions/at_users", GetSuggestionAtUsers, string q, int type
+
+WeiboCursorList<WeiboStatus>, "search/topics", GetTopics, string q
+

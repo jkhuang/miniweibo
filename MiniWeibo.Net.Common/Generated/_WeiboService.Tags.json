@@ -4,4 +4,10 @@ IEnumerable<WeiboUserTag>, "tags", ListOfUserTags, long uid
 
 IEnumerable<WeiboUserTags>, "tags/tags_batch", BatchGetUserTags, string uids
 
-Dictionary<long^string>, "tags/suggestions", ListOfSuggestionTags
+IEnumerable<Dictionary<string^string>>, "tags/suggestions", ListOfSuggestionTags
+
+string[], "tags/create":POST, CreateUserTags, string tags
+
+int, "tags/destroy":POST, DeleteUserTags, long tagId 
+
+string[], "tags/destroy_batch":POST, BatchDeleteUserTags, string ids

@@ -1809,7 +1809,8 @@ namespace MiniWeibo.UnitTests
         public void Can_Get_User_Tags()
         {
             var service = new WeiboService(_consumerKey, _consumerSecret, _accessToken);
-            var result = service.ListOfUserTags(1748510762);
+            // 2436053772 1748510762
+            var result = service.ListOfUserTags(2436053772);
             Assert.IsNotNull(result);
 
             foreach (var item in result)
@@ -1824,22 +1825,22 @@ namespace MiniWeibo.UnitTests
         public void Can_Batch_Get_User_Tags()
         {
             var service = new WeiboService(_consumerKey, _consumerSecret, _accessToken);
-            var result = service.BatchGetUserTags("1904178193,1287611181");
+            var result = service.BatchDeleteUserTags("1904178193,1287611181");
             Assert.IsNotNull(result);
 
-            foreach (var item in result)
-            {
-                Console.WriteLine("Tag id: {0}", item.Id);
-                if (item.Tags != null)
-                {
-                    foreach (var tag in item)
-                    {
-                        Console.WriteLine("User tag id: {0} User tag name: {1} Weight: {2}", 
-                            tag.UserTagId, tag.UserTagName, tag.Weight);
-                    }
-                }
-               
-            }
+            ////foreach (var item in result)
+            ////{
+            ////    Console.WriteLine("Tag id: {0}", item.Id);
+            ////    if (item.Tags != null)
+            ////    {
+            ////        foreach (var tag in item)
+            ////        {
+            ////            Console.WriteLine("User tag id: {0} User tag name: {1} Weight: {2}",
+            ////                tag.UserTagId, tag.UserTagName, tag.Weight);
+            ////        }
+            ////    }
+
+            ////}
 
         }
 
@@ -1852,11 +1853,152 @@ namespace MiniWeibo.UnitTests
 
             foreach (var item in result)
             {
-                Console.WriteLine("Key: {0} Value: {1}", item.Key, item.Value);
+                foreach (var elem in item)
+                {
+                    Console.WriteLine("Key: {0} Value: {1}", elem.Key, elem.Value);
+                }
+                
             }
 
         }
 
+        [Test]
+        public void Can_Create_User_Tags()
+        {
+            var service = new WeiboService(_consumerKey, _consumerSecret, _accessToken);
+            var result = service.CreateUserTags("测试,测试TEST");
+            Assert.IsNotNull(result);
+
+            foreach (var item in result)
+            {
+                Console.WriteLine("Tagid: {0}", item);
+            }
+
+        }
+
+        [Test]
+        public void Can_Delete_User_Tags()
+        {
+            var service = new WeiboService(_consumerKey, _consumerSecret, _accessToken);
+            var result = service.DeleteUserTags(123456);
+            Assert.IsNotNull(result);
+            Console.WriteLine("Tagid: {0}", result);
+        }
+
+        [Test]
+        public void Can_Batch_Delete_User_Tags()
+        {
+            var service = new WeiboService(_consumerKey, _consumerSecret, _accessToken);
+            var result = service.BatchDeleteUserTags("884,303566013684099645");
+            Assert.IsNotNull(result);
+            foreach (var item in result)
+            {
+                Console.WriteLine("Result: {0}", item);
+            }
+            
+        }
+        #endregion
+
+        #region "Weibo Register"
+
+        [Test]
+        public void Can_Verify_Nickname()
+        {
+            var service = new WeiboService(_consumerKey, _consumerSecret, _accessToken);
+            var result = service.VerifyNickname("jkhuang");
+            Assert.IsNotNull(result);
+            Console.WriteLine("Is Legal: {0}",result.IsLegal);
+            foreach (var item in result.SuggestNickname)
+            {
+                Console.WriteLine("Suggest Nickname: {0}", item);
+            }
+            
+        }
+        #endregion
+
+        #region "Weibo Search"
+
+        [Test]
+        public void Can_Get_Suggestion_Users()
+        {
+            var service = new WeiboService(_consumerKey, _consumerSecret, _accessToken);
+            var result = service.GetSuggestionUsers("dj");
+            Assert.IsNotNull(result);
+            foreach (var item in result)
+            {
+                Console.WriteLine("Screen name: {0} Followers count: {1} Uid: {2}", 
+                    item.ScreenName, item.FollowersCount, item.Uid);
+            }
+
+        }
+
+        [Test]
+        public void Can_Get_Suggestion_Schools()
+        {
+            var service = new WeiboService(_consumerKey, _consumerSecret, _accessToken);
+            var result = service.GetSuggestionSchools("电子科技大学");
+            Assert.IsNotNull(result);
+            foreach (var item in result)
+            {
+                Console.WriteLine("School name: {0} Location: {1} Id: {2} Type: {3}",
+                    item.SchoolName, item.Location, item.Id, item.Type);
+            }
+
+        }
+
+        [Test]
+        public void Can_Get_Suggestion_Companys()
+        {
+            var service = new WeiboService(_consumerKey, _consumerSecret, _accessToken);
+            var result = service.GetSuggestionCompanys("新浪");
+            Assert.IsNotNull(result);
+            foreach (var item in result)
+            {
+                Console.WriteLine("Company name: {0}",item.Name);
+            }
+
+        }
+
+        [Test]
+        public void Can_Get_Suggestion_Apps()
+        {
+            var service = new WeiboService(_consumerKey, _consumerSecret, _accessToken);
+            var result = service.GetSuggestionApps("新浪");
+            Assert.IsNotNull(result);
+            foreach (var item in result)
+            {
+                Console.WriteLine("App name: {0} Members Count: {1}", item.AppsName, item.MembersCount);
+            }
+
+        }
+
+        [Test]
+        public void Can_Get_Suggestion_At_Users()
+        {
+            var service = new WeiboService(_consumerKey, _consumerSecret, _accessToken);
+            var result = service.GetSuggestionAtUsers("微", 0);
+            Assert.IsNotNull(result);
+            foreach (var item in result)
+            {
+                Console.WriteLine("Nickname: {0} Remark: {1} Uid: {2}",
+                    item.Nickname, item.Remark, item.Uid);
+            }
+
+        }
+
+        [Test]
+        public void Can_Get_Topics()
+        {
+            var service = new WeiboService("82966982", "72d4545a28a46a6f329c4f2b1e949e6a");
+            var result = service.GetTopics("情人节");
+            Assert.IsNotNull(result);
+            //foreach (var item in result)
+            //{
+            //    //Console.WriteLine("Nickname: {0} Remark: {1} Uid: {2}",
+            //    //    item.Nickname, item.Remark, item.Uid);
+            //}
+
+        }
         #endregion
     }
 }

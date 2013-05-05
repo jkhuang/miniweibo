@@ -25,7 +25,9 @@
 	"_WeiboService.Friendships.json",
 	"_WeiboService.Favorites.json",
 	"_WeiboService.Trends.json",
-	"_WeiboService.Tags.json"
+	"_WeiboService.Tags.json",
+	"_WeiboService.Registers.json",
+	"_WeiboService.Search.json"
 };
 
 foreach (var manifest in manifests)

@@ -98,7 +98,17 @@ namespace MiniWeibo.Net.Common
 							bool UnfollowTrends(long trendId);	
 							IEnumerable<WeiboUserTag> ListOfUserTags(long uid);	
 							IEnumerable<WeiboUserTags> BatchGetUserTags(string uids);	
-							Dictionary<long,string> ListOfSuggestionTags();	
+							IEnumerable<Dictionary<string,string>> ListOfSuggestionTags();	
+							string[] CreateUserTags(string tags);	
+							int DeleteUserTags(long tagId);	
+							string[] BatchDeleteUserTags(string ids);	
+							WeiboRegister VerifyNickname(string nickname);	
+							IEnumerable<WeiboSuggestionUser> GetSuggestionUsers(string q);	
+							IEnumerable<WeiboSuggestionSchool> GetSuggestionSchools(string q);	
+							IEnumerable<WeiboSuggestionCompany> GetSuggestionCompanys(string q);	
+							IEnumerable<WeiboSuggestionApp> GetSuggestionApps(string q);	
+							IEnumerable<WeiboSuggestionUser> GetSuggestionAtUsers(string q, int type);	
+							WeiboCursorList<WeiboStatus> GetTopics(string q);	
 					#endregion
 	}
 }
@@ -456,9 +466,49 @@ namespace MiniWeibo.Net.Common
 						{
 							return WithHammock<IEnumerable<WeiboUserTags>>("tags/tags_batch", FormatAsString, "?uids=", uids);
 						}
-									public virtual Dictionary<long,string> ListOfSuggestionTags()
+									public virtual IEnumerable<Dictionary<string,string>> ListOfSuggestionTags()
 						{
-							return WithHammock<Dictionary<long,string>>("tags/suggestions", FormatAsString);
+							return WithHammock<IEnumerable<Dictionary<string,string>>>("tags/suggestions", FormatAsString);
+						}
+									public virtual string[] CreateUserTags(string tags)
+						{
+							return WithHammock<string[]>(WebMethod.Post, "tags/create", FormatAsString, "?tags=", tags);
+						}
+									public virtual int DeleteUserTags(long tagId)
+						{
+							return WithHammock<int>(WebMethod.Post, "tags/destroy", FormatAsString, "?tag_id=", tagId);
+						}
+									public virtual string[] BatchDeleteUserTags(string ids)
+						{
+							return WithHammock<string[]>(WebMethod.Post, "tags/destroy_batch", FormatAsString, "?ids=", ids);
+						}
+									public virtual WeiboRegister VerifyNickname(string nickname)
+						{
+							return WithHammock<WeiboRegister>("register/verify_nickname", FormatAsString, "?nickname=", nickname);
+						}
+									public virtual IEnumerable<WeiboSuggestionUser> GetSuggestionUsers(string q)
+						{
+							return WithHammock<IEnumerable<WeiboSuggestionUser>>("search/suggestions/users", FormatAsString, "?q=", q);
+						}
+									public virtual IEnumerable<WeiboSuggestionSchool> GetSuggestionSchools(string q)
+						{
+							return WithHammock<IEnumerable<WeiboSuggestionSchool>>("search/suggestions/schools", FormatAsString, "?q=", q);
+						}
+									public virtual IEnumerable<WeiboSuggestionCompany> GetSuggestionCompanys(string q)
+						{
+							return WithHammock<IEnumerable<WeiboSuggestionCompany>>("search/suggestions/companies", FormatAsString, "?q=", q);
+						}
+									public virtual IEnumerable<WeiboSuggestionApp> GetSuggestionApps(string q)
+						{
+							return WithHammock<IEnumerable<WeiboSuggestionApp>>("search/suggestions/apps", FormatAsString, "?q=", q);
+						}
+									public virtual IEnumerable<WeiboSuggestionUser> GetSuggestionAtUsers(string q, int type)
+						{
+							return WithHammock<IEnumerable<WeiboSuggestionUser>>("search/suggestions/at_users", FormatAsString, "?q=", q, "&type=", type);
+						}
+									public virtual WeiboCursorList<WeiboStatus> GetTopics(string q)
+						{
+							return WithHammock<WeiboCursorList<WeiboStatus>>("search/topics", FormatAsString, "?q=", q);
 						}
 					#endregion
 	}
