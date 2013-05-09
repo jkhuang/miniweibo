@@ -1,0 +1,5 @@
+﻿IEnumerable<WeiboUser>, "suggestions/users/hot", GetSuggestionUsers
+
+IEnumerable<WeiboInterestedUser>, "suggestions/users/may_interested", GetInterestedUser
+
+WeiboCursorList<WeiboUser>, "suggestions/users/by_status", ListWeiboSuggestionUsers, string content

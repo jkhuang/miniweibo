@@ -108,7 +108,10 @@ namespace MiniWeibo.Net.Common
 							IEnumerable<WeiboSuggestionCompany> GetSuggestionCompanys(string q);	
 							IEnumerable<WeiboSuggestionApp> GetSuggestionApps(string q);	
 							IEnumerable<WeiboSuggestionUser> GetSuggestionAtUsers(string q, int type);	
-							WeiboCursorList<WeiboStatus> GetTopics(string q);	
+							WeiboCursorList<WeiboStatus> GetTopics(string source, string q);	
+							IEnumerable<WeiboUser> GetSuggestionUsers();	
+							IEnumerable<WeiboInterestedUser> GetInterestedUser();	
+							WeiboCursorList<WeiboUser> ListWeiboSuggestionUsers(string content);	
 					#endregion
 	}
 }
@@ -506,9 +509,21 @@ namespace MiniWeibo.Net.Common
 						{
 							return WithHammock<IEnumerable<WeiboSuggestionUser>>("search/suggestions/at_users", FormatAsString, "?q=", q, "&type=", type);
 						}
-									public virtual WeiboCursorList<WeiboStatus> GetTopics(string q)
+									public virtual WeiboCursorList<WeiboStatus> GetTopics(string source, string q)
 						{
-							return WithHammock<WeiboCursorList<WeiboStatus>>("search/topics", FormatAsString, "?q=", q);
+							return WithHammock<WeiboCursorList<WeiboStatus>>("search/topics", FormatAsString, "?source=", source, "&q=", q);
+						}
+									public virtual IEnumerable<WeiboUser> GetSuggestionUsers()
+						{
+							return WithHammock<IEnumerable<WeiboUser>>("suggestions/users/hot", FormatAsString);
+						}
+									public virtual IEnumerable<WeiboInterestedUser> GetInterestedUser()
+						{
+							return WithHammock<IEnumerable<WeiboInterestedUser>>("suggestions/users/may_interested", FormatAsString);
+						}
+									public virtual WeiboCursorList<WeiboUser> ListWeiboSuggestionUsers(string content)
+						{
+							return WithHammock<WeiboCursorList<WeiboUser>>("suggestions/users/by_status", FormatAsString, "?content=", content);
 						}
 					#endregion
 	}

@@ -1698,7 +1698,7 @@ namespace MiniWeibo.UnitTests
                 Console.WriteLine("Number: {0} Hot word: {1} Trend id: {2}", item.Num, item.Hotword, item.TrendId);
             }
 
-            
+
         }
 
         [Test]
@@ -1731,7 +1731,7 @@ namespace MiniWeibo.UnitTests
 
 
             Console.WriteLine("Trend id: {0} Is follow: {1}", result.TrendId, result.IsFollow);
-       
+
 
         }
 
@@ -1857,7 +1857,7 @@ namespace MiniWeibo.UnitTests
                 {
                     Console.WriteLine("Key: {0} Value: {1}", elem.Key, elem.Value);
                 }
-                
+
             }
 
         }
@@ -1895,7 +1895,7 @@ namespace MiniWeibo.UnitTests
             {
                 Console.WriteLine("Result: {0}", item);
             }
-            
+
         }
         #endregion
 
@@ -1907,12 +1907,12 @@ namespace MiniWeibo.UnitTests
             var service = new WeiboService(_consumerKey, _consumerSecret, _accessToken);
             var result = service.VerifyNickname("jkhuang");
             Assert.IsNotNull(result);
-            Console.WriteLine("Is Legal: {0}",result.IsLegal);
+            Console.WriteLine("Is Legal: {0}", result.IsLegal);
             foreach (var item in result.SuggestNickname)
             {
                 Console.WriteLine("Suggest Nickname: {0}", item);
             }
-            
+
         }
         #endregion
 
@@ -1926,7 +1926,7 @@ namespace MiniWeibo.UnitTests
             Assert.IsNotNull(result);
             foreach (var item in result)
             {
-                Console.WriteLine("Screen name: {0} Followers count: {1} Uid: {2}", 
+                Console.WriteLine("Screen name: {0} Followers count: {1} Uid: {2}",
                     item.ScreenName, item.FollowersCount, item.Uid);
             }
 
@@ -1954,7 +1954,7 @@ namespace MiniWeibo.UnitTests
             Assert.IsNotNull(result);
             foreach (var item in result)
             {
-                Console.WriteLine("Company name: {0}",item.Name);
+                Console.WriteLine("Company name: {0}", item.Name);
             }
 
         }
@@ -1990,15 +1990,101 @@ namespace MiniWeibo.UnitTests
         public void Can_Get_Topics()
         {
             var service = new WeiboService("82966982", "72d4545a28a46a6f329c4f2b1e949e6a");
-            var result = service.GetTopics("情人节");
+            var result = service.GetTopics("82966982", "情人节");
             Assert.IsNotNull(result);
-            //foreach (var item in result)
-            //{
-            //    //Console.WriteLine("Nickname: {0} Remark: {1} Uid: {2}",
-            //    //    item.Nickname, item.Remark, item.Uid);
-            //}
+            foreach (var item in result)
+            {
+                Console.WriteLine("Create at: {0} Screen name: {1} Text: {2} ", item.CreatedAt, item.User.ScreenName, item.Text);
+                if (item.Annotations != null)
+                {
+                    foreach (var annotation in item.Annotations)
+                    {
+                        Console.WriteLine("Fid: {0}", annotation.Fid);
+                    }
+                }
+
+                if (item.Geo != null)
+                {
+                    Console.WriteLine("Type: {0} Latitude: {1} Longitude: {2}", item.Geo.Type, item.Geo.Coordinates.Latitude, item.Geo.Coordinates.Longitude);
+                }
+
+                if (item.Visible != null)
+                {
+                    Console.WriteLine("Type: {0} List id: {1}", item.Visible.Type, item.Visible.ListId);
+                }
+            }
+            Console.WriteLine("Total number: {0}", result.TotalNumber);
 
         }
+
+        #endregion
+
+        #region "Weibo Suggestions"
+
+        [Test]
+        public void Can_Suggestion_Users()
+        {
+            var service = new WeiboService(_consumerKey, _consumerSecret, _accessToken);
+            var result = service.GetSuggestionUsers();
+            Assert.IsNotNull(result);
+            foreach (var item in result)
+            {
+                Console.WriteLine("Id: {0} Screen name: {1} Description: {2} Geo enabled: {3}",
+    item.Id, item.ScreenName, item.Description, item.IsGeoEnabled);
+            }
+
+        }
+
+        [Test]
+        public void Can_Interested_Users()
+        {
+            var service = new WeiboService(_consumerKey, _consumerSecret, _accessToken);
+            var result = service.GetInterestedUser();
+            Assert.IsNotNull(result);
+            foreach (var item in result)
+            {
+                Console.WriteLine("Uid: {0}", item.Uid);
+                if (item.Reason.Following != null)
+                {
+                    foreach (var id in item.Reason.Following.Uid)
+                    {
+                        Console.WriteLine("Uid: {0}", id);
+                    }
+
+                    Console.WriteLine("N: {0}", item.Reason.Following.Count);
+                    
+                }
+
+                if (item.Reason.Follower != null)
+                {
+                    foreach (var id in item.Reason.Follower.Uid)
+                    {
+                        Console.WriteLine("Uid: {0}", id);
+                    }
+
+                    Console.WriteLine("N: {0}", item.Reason.Follower.Count);
+
+                }
+            }
+
+        }
+
+        [Test]
+        public void Can_Get_Suggestion_Users_By_Stauts()
+        {
+            var service = new WeiboService(_consumerKey, _consumerSecret, _accessToken);
+            var result = service.ListWeiboSuggestionUsers("女子挡地铁门被踹飞");
+            Assert.IsNotNull(result);
+            foreach (var item in result)
+            {
+                Console.WriteLine("Id: {0} Screen name: {1} Description: {2} Geo enabled: {3}",
+    item.Id, item.ScreenName, item.Description, item.IsGeoEnabled);
+            }
+
+            Console.WriteLine("Total number: {0}", result.TotalNumber);
+
+        }
+
         #endregion
     }
 }

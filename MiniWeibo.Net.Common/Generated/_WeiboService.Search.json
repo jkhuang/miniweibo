@@ -8,5 +8,5 @@ IEnumerable<WeiboSuggestionApp>, "search/suggestions/apps", GetSuggestionApps, s
 
 IEnumerable<WeiboSuggestionUser>, "search/suggestions/at_users", GetSuggestionAtUsers, string q, int type
 
-WeiboCursorList<WeiboStatus>, "search/topics", GetTopics, string q
+WeiboCursorList<WeiboStatus>, "search/topics", GetTopics, string source, string q
 

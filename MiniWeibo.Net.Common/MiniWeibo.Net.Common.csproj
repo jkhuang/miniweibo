@@ -93,6 +93,7 @@
     <Compile Include="Model\WeiboFavoriteId.cs" />
     <Compile Include="Model\WeiboFavoriteTag.cs" />
     <Compile Include="Model\WeiboFriendRemark.cs" />
+    <Compile Include="Model\WeiboInterestedUser.cs" />
     <Compile Include="Model\WeiboLimit.cs" />
     <Compile Include="Model\WeiboRegister.cs" />
     <Compile Include="Model\WeiboRelation.cs" />
@@ -106,6 +107,7 @@
     <Compile Include="Model\WeiboStatusCount.cs" />
     <Compile Include="Model\WeiboSuggestionApp.cs" />
     <Compile Include="Model\WeiboSuggestionCompany.cs" />
+    <Compile Include="Model\WeiboSuggestionReason.cs" />
     <Compile Include="Model\WeiboSuggestionSchool.cs" />
     <Compile Include="Model\WeiboSuggestionUser.cs" />
     <Compile Include="Model\WeiboTags.cs" />
@@ -149,6 +151,7 @@
     <None Include="Generated\_WeiboService.Friendships.json" />
     <None Include="Generated\_WeiboService.Registers.json" />
     <None Include="Generated\_WeiboService.Search.json" />
+    <None Include="Generated\_WeiboService.Suggestions.json" />
     <None Include="Generated\_WeiboService.Tags.json" />
     <None Include="Generated\_WeiboService.Trends.json" />
     <None Include="Generated\_WeiboService.Users.json" />

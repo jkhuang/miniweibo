@@ -27,7 +27,8 @@
 	"_WeiboService.Trends.json",
 	"_WeiboService.Tags.json",
 	"_WeiboService.Registers.json",
-	"_WeiboService.Search.json"
+	"_WeiboService.Search.json",
+	"_WeiboService.Suggestions.json"
 };
 
 foreach (var manifest in manifests)
