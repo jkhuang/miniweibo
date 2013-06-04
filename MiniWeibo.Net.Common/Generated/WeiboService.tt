@@ -28,7 +28,10 @@
 	"_WeiboService.Tags.json",
 	"_WeiboService.Registers.json",
 	"_WeiboService.Search.json",
-	"_WeiboService.Suggestions.json"
+	"_WeiboService.Suggestions.json",
+	"_WeiboService.Reminds.json",
+	"_WeiboService.ShortUrls.json",
+	"_WeiboService.Common.json"
 };
 
 foreach (var manifest in manifests)
@@ -148,6 +151,10 @@ namespace MiniWeibo.Net.Common
 			 for(var i = 3; i < parts.Length; i++)
 			 {
 				var data = parts[i].Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+				if (data[0].Contains("^"))
+				{
+					data[0] = data[0].Replace("^", " ");
+				}
 				Parameters.Add(new MiniWeiboMethodParameter() { Type = data[0], Name = data[1] });
 			 }
 		}

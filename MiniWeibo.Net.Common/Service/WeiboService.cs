@@ -321,10 +321,52 @@ namespace MiniWeibo.Net.Common
                     segments[i] = ((DateTime)segments[i]).ToString("yyyy-MM-dd");
                 }
 
-                if (typeof(IEnumerable).IsAssignableFrom(segments[i].GetType()) && !(segments[i] is string))
+                if (typeof(IEnumerable).IsAssignableFrom(segments[i].GetType()) && !(segments[i] is string) && !(segments[i] is List<string>))
                 {
                     ResolveEnumerableUrlSegments(segments, i);
                 }
+            }
+
+            int count = segments.Count - 1;
+            if (segments[count] is IEnumerable && segments[count] is List<string>)
+            {
+
+                ////segments[i].
+                ////ResolveEnumerableUrlSegments(segments, segments[i - 1]);
+
+                ////var sb = new StringBuilder();
+                ////foreach (var item in (IEnumerable) segments[i])
+                ////{
+                ////    sb.Append(string.Format("{0}{1}&", segments[i - 1], item));
+                ////}
+
+                ////segments[i] = sb.Remove(sb.Length - 1, 1).ToString();
+
+                var collection = (from object item in (IEnumerable)segments[count] select item.ToString()).ToList();
+                ////var total = collection.Count();
+                //var sb = new StringBuilder(string.Format("{0}", collection[0]));
+                string paramName = segments[count - 1].ToString().Replace("?", "&");
+                ////var count = 0;
+                segments[count] = collection[0];
+                for (int j = 1; j < collection.Count; j++)
+                {
+                    ////sb.Append(string.Format("{0}{1}", paramName, collection[j]));
+
+                    segments.Add(paramName);
+                    segments.Add(collection[j]);
+                }
+
+                ////segments[i] = sb.ToString();
+                ////foreach (var item in collection)
+                ////    {
+                ////        sb.Append(item);
+                ////        if (count < total - 1)
+                ////        {
+                ////            sb.Append(",");
+                ////        }
+                ////        count++;
+                ////    }
+                ////segments[i] = sb.ToString();
             }
 
             path = PathHelpers.ReplaceUriTemplateTokens(segments, path);
@@ -360,6 +402,16 @@ namespace MiniWeibo.Net.Common
             }
             segments[i] = sb.ToString();
         }
+
+        ////private static void ResolveCollectionUrlSegments(IList<object> segments, string paramName, int i)
+        ////{
+        ////    var sb = new StringBuilder();
+        ////    foreach (var item in segments[i])
+        ////    {
+        ////        sb.Append(string.Format("{0}={1}", paramName, item));
+        ////    }
+        ////    segments[i] = sb.ToString();
+        ////}
 
         private void SetTwitterClientInfo(RestBase request)
         {

@@ -1,48 +1,45 @@
 ﻿/*********************************************************************
  * Project Name : MiniWeibo SDK
- * File Name    : WeiboUrl.cs
+ * File Name    : WeiboShortUrl.cs
  * Copyright (c): Jackson Huang
  * Description  : 
  * Reference    : 
  * Author       : Jackson Huang
  * Email        : j.k.jackson023{AT}gmail.com ( {AT} -> @ )
  * Blog         : http://www.cnblogs.com/rush/
- * Create On    : 2013-05-10 09:19:57
+ * Create On    : 2013-05-14 09:40:51
  * *******************************************************************/
+
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace MiniWeibo.Net.Common
 {
-    public class WeiboUrl : IWeiboModel
+    public class WeiboShortUrl : IWeiboModel
     {
-        ////public virtual string Value { get; set; }
+        [DataMember]
+        public bool Result { get; set; }
 
-        ////public WeiboUrl()
-        ////{
-        ////    Initialize();
-        ////}
+        [DataMember]
+        public int LastModified { get; set; }
 
-        ////private void Initialize()
-        ////{
-        ////    EntityType = WeiboEntityType.Url;
-        ////}
-        /// 
+        [DataMember]
+        public string Title { get; set; }
 
+        [DataMember]
+        public string Description { get; set; }
 
         [DataMember]
         public string UrlShort { get; set; }
+
+        [DataMember]
+        public IList<WeiboAnnotation> Annotations { get; set; }
 
         [DataMember]
         public string UrlLong { get; set; }
 
         [DataMember]
         public int Type { get; set; }
-
-        [DataMember]
-        public string Result { get; set; }
-
-        ////[DataMember]
-        ////public string CommentCounts { get; set; }
 
         public string RawSource { get; set; }
     }

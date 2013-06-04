@@ -23,5 +23,8 @@ namespace MiniWeibo.Net.Common
     {
         [DataMember]
         public string Fid { get; set; }
+
+        [DataMember]
+        public long From { get; set; }
     }
 }

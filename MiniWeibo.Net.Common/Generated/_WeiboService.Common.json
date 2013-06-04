@@ -1,0 +1,5 @@
+﻿IEnumerable<Dictionary<string^string>>, "common/code_to_location", GetLocation, string codes
+IEnumerable<Dictionary<string^string>>, "common/get_city", GetCity, string province
+IEnumerable<Dictionary<string^string>>, "common/get_province", GetProvince, string country
+IEnumerable<Dictionary<string^string>>, "common/get_country", GetCountry, string capital
+Dictionary<string^string>, "common/get_timezone", GetTimezone

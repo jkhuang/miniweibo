@@ -1,0 +1,19 @@
+﻿WeiboCursorList<WeiboUrl>, "short_url/shorten", ShortenUrl, params^object[] urlLong
+WeiboCursorList<WeiboUrl>, "short_url/shorten", ShortenUrl, List<string> urlLong
+
+//WeiboCursorList<WeiboUrl>, "short_url/shorten", ShortenUrl, string urlLong, string urlLong1
+
+WeiboCursorList<WeiboUrl>, "short_url/expand", ExpandShortUrl, string urlShort
+
+WeiboCursorList<WeiboShortUrlCount>, "short_url/share/counts", GetShareShortUrlCount, string urlShort
+
+WeiboCursorList<WeiboStatus>, "short_url/share/statuses", GetWeiboStatus, string urlShort
+
+WeiboCursorList<WeiboShortUrlCount>, "short_url/comment/counts", GetShortUrlCommentCount, string urlShort
+
+WeiboCursorList<WeiboShortUrl>, "short_url/info", GetShortUrlInfo, string source, string urlShort
+
+//TODO: Insufficient app permissions
+//short_url/clicks
+//short_url/referers
+//short_url/locations

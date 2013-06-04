@@ -35,11 +35,14 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>E:\Work\Project\[C#]\master\hammock-master\bin\lib\3.5\Hammock.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.TeamSystem.Data.UnitTesting, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\Newtonsoft.Json-master\Src\Newtonsoft.Json\bin\Release\Net35\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -72,6 +75,7 @@
     </Compile>
     <Compile Include="Helpers.cs" />
     <Compile Include="IHttpRequest.cs" />
+    <Compile Include="Model\DatabaseSetup.cs" />
     <Compile Include="Model\Enums\WeiboEnums.cs" />
     <Compile Include="Model\ICursored.cs" />
     <Compile Include="Model\INumbered.cs" />
@@ -101,8 +105,11 @@
     <Compile Include="Model\WeiboIdInfo.cs" />
     <Compile Include="Model\WeiboRelationSource.cs" />
     <Compile Include="Model\WeiboRelationTarget.cs" />
+    <Compile Include="Model\WeiboRemindCount.cs" />
     <Compile Include="Model\WeiboResponse.cs" />
     <Compile Include="Model\WeiboSchool.cs" />
+    <Compile Include="Model\WeiboShortUrl.cs" />
+    <Compile Include="Model\WeiboShortUrlCount.cs" />
     <Compile Include="Model\WeiboStatus.cs" />
     <Compile Include="Model\WeiboStatusCount.cs" />
     <Compile Include="Model\WeiboSuggestionApp.cs" />
@@ -147,14 +154,19 @@
     <Service Include="{B4F97281-0DBD-4835-9ED8-7DFB966E87FF}" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Generated\_WeiboService.Common.json" />
     <None Include="Generated\_WeiboService.Favorites.json" />
     <None Include="Generated\_WeiboService.Friendships.json" />
+    <None Include="Generated\_WeiboService.Notification.json" />
     <None Include="Generated\_WeiboService.Registers.json" />
+    <None Include="Generated\_WeiboService.Reminds.json" />
     <None Include="Generated\_WeiboService.Search.json" />
+    <None Include="Generated\_WeiboService.ShortUrls.json" />
     <None Include="Generated\_WeiboService.Suggestions.json" />
     <None Include="Generated\_WeiboService.Tags.json" />
     <None Include="Generated\_WeiboService.Trends.json" />
     <None Include="Generated\_WeiboService.Users.json" />
+    <None Include="Model\app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

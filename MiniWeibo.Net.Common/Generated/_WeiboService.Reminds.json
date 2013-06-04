@@ -1,0 +1,3 @@
+﻿WeiboRemindCount, "remind/unread_count", GetUnreadRemindCount, long uid 
+
+bool, "remind/set_count", ClearUnreadRemindCount, string type

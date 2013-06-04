@@ -26,3 +26,4 @@ D:\Backup\我的文档\Dropbox\Project\miniweibo\MiniWeibo.Net.Common\bin\Debug\
 D:\Backup\我的文档\Dropbox\Project\miniweibo\MiniWeibo.Net.Common\bin\Debug\Hammock.pdb
 D:\Backup\我的文档\Dropbox\Project\miniweibo\MiniWeibo.Net.Common\obj\Debug\MiniWeibo.Net.Common.dll
 D:\Backup\我的文档\Dropbox\Project\miniweibo\MiniWeibo.Net.Common\obj\Debug\MiniWeibo.Net.Common.pdb
+D:\Backup\我的文档\Dropbox\Project\miniweibo\MiniWeibo.Net.Common\bin\Debug\MiniWeibo.Net.Common.dll.config

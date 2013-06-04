@@ -112,6 +112,23 @@ namespace MiniWeibo.Net.Common
 							IEnumerable<WeiboUser> GetSuggestionUsers();	
 							IEnumerable<WeiboInterestedUser> GetInterestedUser();	
 							WeiboCursorList<WeiboUser> ListWeiboSuggestionUsers(string content);	
+							WeiboCursorList<WeiboStatus> ListSuggestionStatusesOnFriendTimeline(int section);	
+							IEnumerable<WeiboStatus> GetSuggestionHotFavorites();	
+							WeiboUser IdentifyUserAsNotInterested(string uid);	
+							WeiboRemindCount GetUnreadRemindCount(long uid);	
+							bool ClearUnreadRemindCount(string type);	
+							WeiboCursorList<WeiboUrl> ShortenUrl(params object[] urlLong);	
+							WeiboCursorList<WeiboUrl> ShortenUrl(List<string> urlLong);	
+							WeiboCursorList<WeiboUrl> ExpandShortUrl(string urlShort);	
+							WeiboCursorList<WeiboShortUrlCount> GetShareShortUrlCount(string urlShort);	
+							WeiboCursorList<WeiboStatus> GetWeiboStatus(string urlShort);	
+							WeiboCursorList<WeiboShortUrlCount> GetShortUrlCommentCount(string urlShort);	
+							WeiboCursorList<WeiboShortUrl> GetShortUrlInfo(string source, string urlShort);	
+							IEnumerable<Dictionary<string,string>> GetLocation(string codes);	
+							IEnumerable<Dictionary<string,string>> GetCity(string province);	
+							IEnumerable<Dictionary<string,string>> GetProvince(string country);	
+							IEnumerable<Dictionary<string,string>> GetCountry(string capital);	
+							Dictionary<string,string> GetTimezone();	
 					#endregion
 	}
 }
@@ -524,6 +541,74 @@ namespace MiniWeibo.Net.Common
 									public virtual WeiboCursorList<WeiboUser> ListWeiboSuggestionUsers(string content)
 						{
 							return WithHammock<WeiboCursorList<WeiboUser>>("suggestions/users/by_status", FormatAsString, "?content=", content);
+						}
+									public virtual WeiboCursorList<WeiboStatus> ListSuggestionStatusesOnFriendTimeline(int section)
+						{
+							return WithHammock<WeiboCursorList<WeiboStatus>>("suggestions/statuses/reorder", FormatAsString, "?section=", section);
+						}
+									public virtual IEnumerable<WeiboStatus> GetSuggestionHotFavorites()
+						{
+							return WithHammock<IEnumerable<WeiboStatus>>("suggestions/favorites/hot", FormatAsString);
+						}
+									public virtual WeiboUser IdentifyUserAsNotInterested(string uid)
+						{
+							return WithHammock<WeiboUser>(WebMethod.Post, "suggestions/users/not_interested", FormatAsString, "?uid=", uid);
+						}
+									public virtual WeiboRemindCount GetUnreadRemindCount(long uid)
+						{
+							return WithHammock<WeiboRemindCount>("remind/unread_count", FormatAsString, "?uid=", uid);
+						}
+									public virtual bool ClearUnreadRemindCount(string type)
+						{
+							return WithHammock<bool>("remind/set_count", FormatAsString, "?type=", type);
+						}
+									public virtual WeiboCursorList<WeiboUrl> ShortenUrl(params object[] urlLong)
+						{
+							return WithHammock<WeiboCursorList<WeiboUrl>>("short_url/shorten", FormatAsString, "?url_long=", urlLong);
+						}
+									public virtual WeiboCursorList<WeiboUrl> ShortenUrl(List<string> urlLong)
+						{
+							return WithHammock<WeiboCursorList<WeiboUrl>>("short_url/shorten", FormatAsString, "?url_long=", urlLong);
+						}
+									public virtual WeiboCursorList<WeiboUrl> ExpandShortUrl(string urlShort)
+						{
+							return WithHammock<WeiboCursorList<WeiboUrl>>("short_url/expand", FormatAsString, "?url_short=", urlShort);
+						}
+									public virtual WeiboCursorList<WeiboShortUrlCount> GetShareShortUrlCount(string urlShort)
+						{
+							return WithHammock<WeiboCursorList<WeiboShortUrlCount>>("short_url/share/counts", FormatAsString, "?url_short=", urlShort);
+						}
+									public virtual WeiboCursorList<WeiboStatus> GetWeiboStatus(string urlShort)
+						{
+							return WithHammock<WeiboCursorList<WeiboStatus>>("short_url/share/statuses", FormatAsString, "?url_short=", urlShort);
+						}
+									public virtual WeiboCursorList<WeiboShortUrlCount> GetShortUrlCommentCount(string urlShort)
+						{
+							return WithHammock<WeiboCursorList<WeiboShortUrlCount>>("short_url/comment/counts", FormatAsString, "?url_short=", urlShort);
+						}
+									public virtual WeiboCursorList<WeiboShortUrl> GetShortUrlInfo(string source, string urlShort)
+						{
+							return WithHammock<WeiboCursorList<WeiboShortUrl>>("short_url/info", FormatAsString, "?source=", source, "&url_short=", urlShort);
+						}
+									public virtual IEnumerable<Dictionary<string,string>> GetLocation(string codes)
+						{
+							return WithHammock<IEnumerable<Dictionary<string,string>>>("common/code_to_location", FormatAsString, "?codes=", codes);
+						}
+									public virtual IEnumerable<Dictionary<string,string>> GetCity(string province)
+						{
+							return WithHammock<IEnumerable<Dictionary<string,string>>>("common/get_city", FormatAsString, "?province=", province);
+						}
+									public virtual IEnumerable<Dictionary<string,string>> GetProvince(string country)
+						{
+							return WithHammock<IEnumerable<Dictionary<string,string>>>("common/get_province", FormatAsString, "?country=", country);
+						}
+									public virtual IEnumerable<Dictionary<string,string>> GetCountry(string capital)
+						{
+							return WithHammock<IEnumerable<Dictionary<string,string>>>("common/get_country", FormatAsString, "?capital=", capital);
+						}
+									public virtual Dictionary<string,string> GetTimezone()
+						{
+							return WithHammock<Dictionary<string,string>>("common/get_timezone", FormatAsString);
 						}
 					#endregion
 	}

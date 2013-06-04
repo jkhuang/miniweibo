@@ -104,6 +104,14 @@ namespace MiniWeibo.Net.Common.Serialization
                 return (T)result;
             }
 
+
+            if (typeof(T) == typeof(Dictionary<string, string>))
+            {
+                // string json = @"{""key1"":""value1"",""key2"":""value2""}";
+                var result = JsonConvert.DeserializeObject<Dictionary<string, string>>(content);
+                return (T)Convert.ChangeType(result, typeof(T));
+            }
+
             var wantsCollection = typeof(IEnumerable).IsAssignableFrom(typeof(T));
 
             var deserialized = wantsCollection
@@ -163,7 +171,9 @@ namespace MiniWeibo.Net.Common.Serialization
                 instance = ParseInnerContent<T>("ids", content, cursor, instance, ref array);
                 instance = ParseInnerContent<T>("favorites", content, cursor, instance, ref array);
                 instance = ParseInnerContent<T>("tags", content, cursor, instance, ref array);
-
+                instance = ParseInnerContent<T>("urls", content, cursor, instance, ref array);
+                instance = ParseInnerContent<T>("share_statuses", content, cursor, instance, ref array);
+                
 
                 if (null == array)
                 {

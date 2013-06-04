@@ -1,4 +1,7 @@
 ﻿
+using System.Collections.Generic;
+using System.Linq;
+
 namespace MiniWeibo.UnitTests
 {
     using System;
@@ -2085,6 +2088,297 @@ namespace MiniWeibo.UnitTests
 
         }
 
+        [Test]
+        public void Can_Suggestion_Status_Friend_Timeline()
+        {
+            var service = new WeiboService(_consumerKey, _consumerSecret, _accessToken);
+            ////var service = new WeiboService(_iphoneConsumerKey, _iphoneConsumerSecret, _iphoneAccessToken);
+
+            var result = service.ListSuggestionStatusesOnFriendTimeline(3600);
+
+            foreach (var item in result)
+            {
+                Console.WriteLine("Create at: {0} Screen name: {1} Text: {2} ", item.CreatedAt, item.User.ScreenName, item.Text);
+                if (item.Annotations != null)
+                {
+                    foreach (var annotation in item.Annotations)
+                    {
+                        Console.WriteLine("Fid: {0}", annotation.Fid);
+                    }
+                }
+
+                if (item.Geo != null)
+                {
+                    Console.WriteLine("Type: {0} Latitude: {1} Longitude: {2}", item.Geo.Type, item.Geo.Coordinates.Latitude, item.Geo.Coordinates.Longitude);
+                }
+
+                if (item.Visible != null)
+                {
+                    Console.WriteLine("Type: {0} List id: {1}", item.Visible.Type, item.Visible.ListId);
+                }
+            }
+
+            Console.WriteLine("HasVisual: {0} Previous cursor: {1} Next cursor: {2} Total number: {3}", result.HasVisible, result.PreviousCursor, result.NextCursor, result.TotalNumber);
+
+        }
+
+        [Test]
+        public void Can_Get_Suggestion_Hot_Favorites()
+        {
+            var service = new WeiboService(_consumerKey, _consumerSecret, _accessToken);
+            var result = service.GetSuggestionHotFavorites();
+
+            foreach (var item in result)
+            {
+                Console.WriteLine("Create at: {0} Screen name: {1} Text: {2} ", item.CreatedAt, item.User.ScreenName, item.Text);
+                if (item.Annotations != null)
+                {
+                    foreach (var annotation in item.Annotations)
+                    {
+                        Console.WriteLine("Fid: {0}", annotation.Fid);
+                    }
+                }
+
+                if (item.Geo != null)
+                {
+                    Console.WriteLine("Type: {0} Latitude: {1} Longitude: {2}", item.Geo.Type, item.Geo.Coordinates.Latitude, item.Geo.Coordinates.Longitude);
+                }
+
+                if (item.Visible != null)
+                {
+                    Console.WriteLine("Type: {0} List id: {1}", item.Visible.Type, item.Visible.ListId);
+                }
+            }
+
+            ////Console.WriteLine("HasVisual: {0} Previous cursor: {1} Next cursor: {2} Total number: {3}", result.HasVisible, result.PreviousCursor, result.NextCursor, result.TotalNumber);
+        }
+
+        [Test]
+        public void Can_Identify_User_As_Not_Interested()
+        {
+            var service = new WeiboService(_consumerKey, _consumerSecret, _accessToken);
+
+            var result = service.IdentifyUserAsNotInterested("1195403385");
+            Assert.IsNotNull(result);
+            Console.WriteLine("Id: {0} Screen name: {1} Location: {2}", result.Id, result.ScreenName, result.Location);
+        }
+
+        #endregion
+
+        #region "Weibo Reminds"
+
+        [Test]
+        public void Can_Get_Unread_Remind_Count()
+        {
+            var service = new WeiboService(_consumerKey, _consumerSecret, _accessToken);
+
+            var result = service.GetUnreadRemindCount(1195403385);
+            Assert.IsNotNull(result);
+            Console.WriteLine("Status: {0} Follower: {1} Cmt: {2} Dm: {3} MentionStatus: {4} MentionCmt: {5} Group: {6} PrivateGroup: {7} Notice: {8} Invite: {9} Badge: {10} Photo: {11}",
+                result.Status, result.Follower, result.Cmt, result.Dm, result.MentionStatus, result.MentionCmt, result.Group, result.Group, result.PrivateGroup, result.Notice, result.Invite, result.Badge, result.Photo);
+        }
+
+        [Test]
+        public void Can_Clear_Unread_Remind_Count()
+        {
+            var service = new WeiboService(_consumerKey, _consumerSecret, _accessToken);
+
+            var result = service.ClearUnreadRemindCount("cmt");
+            Assert.IsNotNull(result);
+            Console.WriteLine("Result: {0}", result);
+        }
+
+        #endregion
+
+        #region "Weibo Short Urls"
+
+        //TODO: Need to fix muti-parameters.
+        [Test]
+        public void Can_Shorten_Long_Url()
+        {
+            var service = new WeiboService(_consumerKey, _consumerSecret, _accessToken);
+
+            var paramList = new List<string> { "http://www.cnblogs.com/rush/" };
+            var result = service.ShortenUrl(paramList);
+            Assert.IsNotNull(result);
+            foreach (var item in result)
+            {
+                Console.WriteLine("Url long: {0} Url short: {1} Url type: {2} Result: {3}", 
+                    item.UrlLong, item.UrlShort, item.Type, item.Result);
+            }
+            
+        }
+
+        //TODO: Need to fix muti-parameters.
+        [Test]
+        public void Can_Expand_Shorten_Long_Url()
+        {
+            var service = new WeiboService(_consumerKey, _consumerSecret, _accessToken);
+
+            ////var paramList = new List<string> { "http://www.cnblogs.com/rush/", "http://jsonviewer.stack.hu/" };
+            var result = service.ShortenUrl("http://t.cn/zY3Im0L ");
+            Assert.IsNotNull(result);
+            foreach (var item in result)
+            {
+                Console.WriteLine("Url long: {0} Url short: {1} Url type: {2} Result: {3}",
+                    item.UrlLong, item.UrlShort, item.Type, item.Result);
+            }
+
+        }
+
+        [Test]
+        public void Can_Share_Shorten_Url_Count()
+        {
+            var service = new WeiboService(_consumerKey, _consumerSecret, _accessToken);
+
+            ////var paramList = new List<string> { "http://www.cnblogs.com/rush/", "http://jsonviewer.stack.hu/" };
+            var result = service.GetShareShortUrlCount("http://t.cn/zWHICRh");
+            Assert.IsNotNull(result);
+            foreach (var item in result)
+            {
+                Console.WriteLine("Url long: {0} Url short: {1} Count: {2}",
+                    item.UrlLong, item.UrlShort, item.ShareCounts);
+            }
+
+        }
+
+        [Test]
+        public void Can_Get_Status_With_Short_Url()
+        {
+            var service = new WeiboService(_consumerKey, _consumerSecret, _accessToken);
+
+            ////var paramList = new List<string> { "http://www.cnblogs.com/rush/", "http://jsonviewer.stack.hu/" };
+            var result = service.GetWeiboStatus("http://t.cn/zWHICRh");
+            Assert.IsNotNull(result);
+            foreach (var item in result)
+            {
+                if (item.Deleted == "1")
+                {
+                    continue;
+                }
+                Console.WriteLine("Create at: {0} Screen name: {1} Text: {2} ", item.CreatedAt, item.User.ScreenName, item.Text);
+                if (item.Annotations != null)
+                {
+                    foreach (var annotation in item.Annotations)
+                    {
+                        Console.WriteLine("Fid: {0}", annotation.Fid);
+                    }
+                }
+
+                if (item.Geo != null)
+                {
+                    Console.WriteLine("Type: {0} Latitude: {1} Longitude: {2}", item.Geo.Type, item.Geo.Coordinates.Latitude, item.Geo.Coordinates.Longitude);
+                }
+
+                if (item.Visible != null)
+                {
+                    Console.WriteLine("Type: {0} List id: {1}", item.Visible.Type, item.Visible.ListId);
+                }
+            }
+
+        }
+
+        [Test]
+        public void Can_Get_Short_Url_Comment_Count()
+        {
+            var service = new WeiboService(_consumerKey, _consumerSecret, _accessToken);
+
+            ////var paramList = new List<string> { "http://www.cnblogs.com/rush/", "http://jsonviewer.stack.hu/" };
+            var result = service.GetShortUrlCommentCount("http://t.cn/zWHICRh");
+            Assert.IsNotNull(result);
+            foreach (var item in result)
+            {
+                Console.WriteLine("Url long: {0} Url short: {1} Count: {2}",
+                    item.UrlLong, item.UrlShort, item.CommentCounts);
+            }
+        }
+
+        [Test]
+        public void Can_Get_Short_Url_Info()
+        {
+            var service = new WeiboService(_iphoneConsumerKey, _iphoneConsumerSecret);
+
+            ////var paramList = new List<string> { "http://www.cnblogs.com/rush/", "http://jsonviewer.stack.hu/" };
+            var result = service.GetShortUrlInfo(_iphoneConsumerKey, "http://t.cn/h4DwT1");
+            Assert.IsNotNull(result);
+            foreach (var item in result)
+            {
+                Console.WriteLine("Url long: {0} Url short: {1} Description: {2}",
+                    item.UrlLong, item.UrlShort, item.Description);
+
+                if (item.Annotations != null)
+                {
+                    foreach (var annotation in item.Annotations)
+                    {
+                        Console.WriteLine("From: {0}", annotation.From);
+                    }
+                }
+            }
+        }
+
+        #endregion
+
+        #region "Weibo Common"
+
+        [Test]
+        public void Can_Get_Location()
+        {
+            var service = new WeiboService(_consumerKey, _consumerSecret, _accessToken);
+            var result = service.GetLocation("100,200,300");
+            Assert.IsNotNull(result);
+            foreach (var item in result)
+            {
+                Console.WriteLine("Code: {0} Value: {1}", item.First().Key, item.First().Value);
+            }
+        }
+
+        [Test]
+        public void Can_Get_City()
+        {
+            var service = new WeiboService(_consumerKey, _consumerSecret, _accessToken);
+            var result = service.GetCity("001011");
+            Assert.IsNotNull(result);
+            foreach (var item in result)
+            {
+                Console.WriteLine("Code: {0} Value: {1}", item.First().Key, item.First().Value);
+            }
+        }
+
+        [Test]
+        public void Can_Get_Province()
+        {
+            var service = new WeiboService(_consumerKey, _consumerSecret, _accessToken);
+            var result = service.GetProvince("001");
+            Assert.IsNotNull(result);
+            foreach (var item in result)
+            {
+                Console.WriteLine("Code: {0} Value: {1}", item.First().Key, item.First().Value);
+            }
+        }
+
+        [Test]
+        public void Can_Get_Country()
+        {
+            var service = new WeiboService(_consumerKey, _consumerSecret, _accessToken);
+            var result = service.GetCountry("c");
+            Assert.IsNotNull(result);
+            foreach (var item in result)
+            {
+                Console.WriteLine("Code: {0} Value: {1}", item.First().Key, item.First().Value);
+            }
+        }
+
+        [Test]
+        public void Can_Get_Timezone()
+        {
+            var service = new WeiboService(_consumerKey, _consumerSecret, _accessToken);
+            var result = service.GetTimezone();
+            Assert.IsNotNull(result);
+            foreach (var item in result)
+            {
+                Console.WriteLine("Code: {0} Value: {1}", item.Key, item.Value);
+            }
+        }
         #endregion
     }
 }
